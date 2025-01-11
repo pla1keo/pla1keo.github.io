@@ -101,6 +101,24 @@ const items = [
         upg: 'damage',
         yellow: { damage: 2, maxhp: 5 }
     },
+    {
+        imageSrc: './imgs/head/bad.png',
+        stats: { krit: 10 },
+        upg: 'krit',
+        yellow: {}
+    },
+    {
+        imageSrc: './imgs/head/ironman.png',
+        stats: { krit: 2 },
+        upg: 'krit',
+        yellow: {}
+    },
+    {
+        imageSrc: './imgs/head/pepe.png',
+        stats: { krit: 1 },
+        upg: 'krit',
+        yellow: {}
+    },
 ];
 
 var RuTypes = {
@@ -365,6 +383,10 @@ function showPereshiv(slot) {
                 {
                     name: 'shlyapa1',
                     yellow: { damage: 1, maxhp: 5 }
+                },
+                {
+                    name: 'tact',
+                    yellow: { deff: 2, armourmax: 10 }
                 }
             ]
             break;
@@ -373,7 +395,31 @@ function showPereshiv(slot) {
                 {
                     name: 'cherep',
                     yellow: { damage: 2, armourmax: 10 }
-                }
+                },
+                {
+                    name: 'frontman',
+                    yellow: { damage: 1, maxhp: 5 }
+                },
+                {
+                    name: 'kvadrat',
+                    yellow: { krit: 1, maxhp: 5 }
+                },
+                {
+                    name: 'krug',
+                    yellow: { deff: 1, maxhp: 5 }
+                },
+                {
+                    name: 'treugolnik',
+                    yellow: { damage: 1, maxhp: 5 }
+                },
+                {
+                    name: 'loki',
+                    yellow: { damage: 1, maxhp: 5 }
+                },
+                {
+                    name: 'wrench',
+                    yellow: { deff: 1, maxhp: 5 }
+                },
             ]
             break;
         case 'hand':
@@ -439,6 +485,14 @@ function showPereshiv(slot) {
                 {
                     name: 'desolator',
                     yellow: { damage: 2, krit: 4, neoglysh: 3, otrazh: 1 }
+                },
+                {
+                    name: 'firepickaxe',
+                    yellow: { damage: 1, maxhp: 5 }
+                },
+                {
+                    name: 'creeper',
+                    yellow: { deff: 1, maxhp: 5 }
                 },
             ]
             break;
@@ -524,6 +578,7 @@ trash.addEventListener('drop', (e) => {
             if (img.outerHTML === imgHtml) {
                 var gridItem = $(img).closest('.grid-item');
                 $(gridItem).find('.tooltip').text($(gridItem).attr('ru-name'))
+                $(gridItem).find('.tooltip').css('display', 'none')
                 img.parentElement.removeChild(img);
                 console.log('deleted')
             }
