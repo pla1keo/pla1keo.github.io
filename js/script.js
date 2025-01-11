@@ -172,7 +172,6 @@ class ItemPlacer {
 
         const slotName = this.getSlotNameFromSrc(imageSrc);
         if (!slotName) {
-            console.error(`Не удалось определить slot-name для ${imageSrc}`);
             return;
         }
 
@@ -185,8 +184,6 @@ class ItemPlacer {
 
             const img = this.createItemElement(imageSrc, stats, upg, yellow);
             container.appendChild(img);
-        } else {
-            console.error(`Контейнер с slot-name="${slotName}" не найден.`);
         }
     }
 }
@@ -347,7 +344,6 @@ document.querySelectorAll('.grid-item').forEach(item => {
                     } else {
                         current_item = item.appendChild(imgElement);
                     }
-                    console.log('NEW ITEM')
                     const slot = getSlotNameFromItem(current_item)
                     showPereshiv(slot)
                 }
@@ -586,7 +582,6 @@ trash.addEventListener('drop', (e) => {
                 $(gridItem).find('.tooltip').text($(gridItem).attr('ru-name'))
                 $(gridItem).find('.tooltip').css('display', 'none')
                 img.parentElement.removeChild(img);
-                console.log('deleted')
             }
         });
     }
@@ -632,6 +627,7 @@ $(document).ready(function () {
             $button.on('click', function () {
                 var item = $gridItem.find('img')[0]
                 var tooltip = $gridItem.find('.tooltip')[0]
+                $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
                 if (item != undefined) {
                     item.dataset.nashivka = `{"${button.type}": ${button.value}}`
                     if (item.dataset.nashivka != undefined) {
