@@ -78,6 +78,12 @@ const items = [
         yellow: {}
     },
     {
+        imageSrc: './imgs/spine/energoshield.png',
+        stats: { deff: 4, maxhp: 10, opyan: 2 },
+        upg: 'deff',
+        yellow: {}
+    },
+    {
         imageSrc: './imgs/shoulder/delorean.png',
         stats: { deff: 0, krit: 10, armourmax: 20, oglysh: 4 },
         upg: 'deff',
