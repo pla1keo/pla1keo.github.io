@@ -523,6 +523,10 @@ function showPereshiv(slot) {
                     name: 'creeper',
                     yellow: { deff: 1, hpmax: 5 }
                 },
+                {
+                    name: 'aegis',
+                    yellow: { damage: 2, hpmax: 8, armourmax: 8, otrazh: 1 }
+                },
             ]
             break;
         case 'armour':
