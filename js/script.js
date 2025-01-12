@@ -282,6 +282,14 @@ function updateStats() {
             opyan += stats.opyan || 0;
             neoglysh += stats.neoglysh || 0;
             otrazh += stats.otrazh || 0;
+
+            if (armourmax >= 160) {
+                armourmax = 160;
+            }
+
+            if (deff >= 90) {
+                deff = 90;
+            }
         }
     });
     $('span#deff').text(`[-${deff}% урона]`);
@@ -668,7 +676,7 @@ $(document).ready(function () {
         var tooltip = $gridItem.find('.tooltip')[0]
         $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
         if (item != undefined) {
-            item.dataset.nashivka = `{"neoglysh": 10}`
+            item.dataset.nashivka = `{"neoglysh": 20}`
             
             if (item.dataset.nashivka != undefined) {
                 tooltip.innerHTML = `${tooltip.innerHTML}<br>Нашивка: Есть`;
