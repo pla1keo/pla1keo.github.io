@@ -619,7 +619,6 @@ function getRandomElement(arr) {
     if (arr.length === 0) {
         throw new Error("Array cannot be empty");
     }
-
     const randomIndex = window.crypto.getRandomValues(new Uint32Array(1))[0] % arr.length;
 
     return arr[randomIndex];
@@ -643,9 +642,35 @@ const myArray = [
 ]
 
 $(document).ready(function () {
-    const randomElement = getRandomElement(myArray);
-    console.log(randomElement)
-    $('#character-image').attr('src', `./imgs/characters/${randomElement}.png`);
+    let previousElement = null;
+
+    function updateCharacterImage() {
+        let randomElement;
+
+        do {
+            randomElement = getRandomElement(myArray);
+        } while (randomElement === previousElement);
+
+        previousElement = randomElement;
+        $('#character-image').attr('src', `./imgs/characters/${randomElement}.png`);
+    }
+
+    updateCharacterImage();
+
+    var character = $('#character')
+    var tooltip = character.find('.tooltip');
+
+    character.on('click', function () {
+        updateCharacterImage();
+    });
+
+    character.on('mouseover', function () {
+        tooltip.show();
+    });
+    
+    character.on('mouseout', function () {
+        tooltip.hide();
+    });
 
     $('.btn.plus').on('click', function () {
 
