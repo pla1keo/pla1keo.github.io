@@ -3,7 +3,7 @@ function isMobileDevice() {
 }
 
 if (isMobileDevice()) {
-    window.location.href = 'm-index.html';
+    window.location.href = 'mobile/';
 }
 
 const items = [
