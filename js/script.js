@@ -79,7 +79,7 @@ const items = [
     },
     {
         imageSrc: './imgs/spine/energoshield.png',
-        stats: { deff: 4, maxhp: 10, opyan: 2 },
+        stats: { deff: 4, hpmax: 10, opyan: 2 },
         upg: 'deff',
         yellow: {}
     },
@@ -105,7 +105,7 @@ const items = [
         imageSrc: './imgs/breast/energomahi.png',
         stats: { deff: 4, damage: 2, krit: 12, armourmax: 25 },
         upg: 'damage',
-        yellow: { damage: 2, maxhp: 5 }
+        yellow: { damage: 2, hpmax: 5 }
     },
     {
         imageSrc: './imgs/head/bad.png',
@@ -131,7 +131,7 @@ var RuTypes = {
     deff: 'Защита',
     damage: 'Урон',
     krit: 'Удача',
-    maxhp: 'Макс. HP',
+    hpmax: 'Макс. HP',
     armourmax: 'Макс. Брони',
     oglysh: 'Шанс оглушения',
     opyan: 'Шанс опьянения',
@@ -379,23 +379,23 @@ function showPereshiv(slot) {
             items = [
                 {
                     name: 'tango',
-                    yellow: { deff: 2, damage: 1, krit: 1, maxhp: 10 }
+                    yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
                 },
                 {
                     name: 'shlyapa4',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'shlyapa3',
-                    yellow: { deff: 1, maxhp: 5 }
+                    yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'shlyapa2',
-                    yellow: { krit: 1, maxhp: 5 }
+                    yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'shlyapa1',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'tact',
@@ -411,27 +411,27 @@ function showPereshiv(slot) {
                 },
                 {
                     name: 'frontman',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'kvadrat',
-                    yellow: { krit: 1, maxhp: 5 }
+                    yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'krug',
-                    yellow: { deff: 1, maxhp: 5 }
+                    yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'treugolnik',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'loki',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'wrench',
-                    yellow: { deff: 1, maxhp: 5 }
+                    yellow: { deff: 1, hpmax: 5 }
                 },
             ]
             break;
@@ -443,35 +443,35 @@ function showPereshiv(slot) {
                 },
                 {
                     name: 'energowatch',
-                    yellow: { deff: 2, damage: 2, maxhp: 5, armourmax: 5, otrazh: 6 }
+                    yellow: { deff: 2, damage: 2, hpmax: 5, armourmax: 5, otrazh: 6 }
                 },
                 {
                     name: 'watch1',
-                    yellow: { krit: 1, maxhp: 5 }
+                    yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch2',
-                    yellow: { deff: 1, maxhp: 5 }
+                    yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch3',
-                    yellow: { deff: 1, maxhp: 5 }
+                    yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch4',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch5',
-                    yellow: { krit: 1, maxhp: 5 }
+                    yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch6',
-                    yellow: { deff: 1, maxhp: 5 }
+                    yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch7',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 }
             ]
             break;
@@ -493,7 +493,7 @@ function showPereshiv(slot) {
                 },
                 {
                     name: 'battlefury',
-                    yellow: { deff: 5, krit: 5, maxhp: 5 }
+                    yellow: { deff: 5, krit: 5, hpmax: 5 }
                 },
                 {
                     name: 'desolator',
@@ -501,11 +501,11 @@ function showPereshiv(slot) {
                 },
                 {
                     name: 'firepickaxe',
-                    yellow: { damage: 1, maxhp: 5 }
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'creeper',
-                    yellow: { deff: 1, maxhp: 5 }
+                    yellow: { deff: 1, hpmax: 5 }
                 },
             ]
             break;
