@@ -9,6 +9,18 @@ body {
     height: 100vh;
 }
 
+.fan-content img {
+    width: 5vw; 
+    margin-left: 10px; 
+    margin-top: 10px;
+}
+
+.fan-content div {
+    width: 6.5vw;
+    font-size: 10px;
+    margin-left: 10px;
+}
+
 .container {
     display: flex;
     width: 100%;
