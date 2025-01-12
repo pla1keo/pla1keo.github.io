@@ -19,7 +19,7 @@ const items = [
     },
     {
         imageSrc: './imgs/shoulder/energoshar.png',
-        stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, oglysh: 10 },
+        stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, neoglysh: 10 },
         upg: 'deff',
         yellow: {}
     },
@@ -241,6 +241,16 @@ function updateStats() {
                 } else {
                     if (zatochka >= 4) {
                         stats[type] += (zatochka - 3) * upgrader;
+                        if (zatochka == 13) {
+                            if (stats.armourmax == undefined) {
+                                stats.armourmax = 0;
+                            }
+                            if (stats.hpmax == undefined) {
+                                stats.hpmax = 0;
+                            }
+                            stats.armourmax += 9;
+                            stats.hpmax += 5;
+                        }
                     }
                 }
             }
@@ -249,6 +259,7 @@ function updateStats() {
             damage += nashivka.damage || 0;
             krit += nashivka.krit || 0;
             otrazh += nashivka.otrazh || 0;
+            neoglysh += nashivka.neoglysh || 0;
 
             deff += yellow_stats.deff || 0;
             hpmin += yellow_stats.hpmin || 0;
@@ -647,6 +658,23 @@ $(document).ready(function () {
 
 
         $gridItem.append($buttonContainer);
+    });
+
+
+    $('.btn.nashivkabronik').on('click', function () {
+
+        var $gridItem = $(this).closest('.grid-item');
+        var item = $gridItem.find('img')[0]
+        var tooltip = $gridItem.find('.tooltip')[0]
+        $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
+        if (item != undefined) {
+            item.dataset.nashivka = `{"neoglysh": 10}`
+            
+            if (item.dataset.nashivka != undefined) {
+                tooltip.innerHTML = `${tooltip.innerHTML}<br>Нашивка: Есть`;
+            }
+            updateStats()
+        }
     });
 
     const closeModalButton = document.getElementById('closeModal');
