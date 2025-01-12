@@ -614,7 +614,34 @@ trash.addEventListener('drop', (e) => {
     updateStats();
 });
 
+function getRandomElement(arr) {
+    if (arr.length === 0) {
+        throw new Error("Array cannot be empty");
+    }
+
+    const randomIndex = window.crypto.getRandomValues(new Uint32Array(1))[0] % arr.length;
+
+    return arr[randomIndex];
+}
+
+const myArray = [
+    'fenny',
+    'pudge',
+    'osel',
+    'ct',
+    'bbt',
+    'hitok',
+    'homelander',
+    'rilay',
+    'superman',
+    'aura'
+]
+
 $(document).ready(function () {
+    const randomElement = getRandomElement(myArray);
+    console.log(randomElement)
+    $('#character-image').attr('src', `./imgs/characters/${randomElement}.png`);
+
     $('.btn.plus').on('click', function () {
 
         let span = $(this).closest('.grid-text').find('span');
