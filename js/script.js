@@ -168,6 +168,7 @@ class ItemPlacer {
         const img = document.createElement('img');
         img.src = imageSrc;
         img.draggable = true;
+        img.className = 'main'
         img.setAttribute('data-stats', JSON.stringify(stats));
         img.setAttribute('data-upg', upg);
         img.setAttribute('data-yellow', JSON.stringify(yellow));
@@ -227,7 +228,7 @@ function updateStats() {
     var otrazh = 0;
 
     gridItems.forEach(item => {
-        const img = item.querySelector('img');
+        const img = item.querySelector('img.main');
         if (img) {
             const stats = JSON.parse(img.dataset.stats);
             const type = img.dataset.upg;
@@ -360,17 +361,20 @@ document.querySelectorAll('.grid-item').forEach(item => {
 
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = imgHtml.trim();
-            const imgElement = tempDiv.querySelector('img');
+            const imgElement = tempDiv.querySelector('img.main');
             if (slot_name == item.getAttribute("id")) {
                 if (imgElement) {
-                    const existingImg = item.querySelector('img');
+                    const existingImg = item.querySelector('img.main');
                     if (existingImg) {
                         existingImg.outerHTML = imgHtml;
-                        current_item = existingImg
+                        $(item).find('img.default-accs').remove();
                     } else {
-                        current_item = item.appendChild(imgElement);
+                        item.appendChild(imgElement);
                     }
+                    current_item = $(item).find('img')[0]
+                    current_item.className = 'main'
                     $(item).find('.tooltip').text($(item).attr('ru-name'))
+                    console.log(current_item)
                     const slot = getSlotNameFromItem(current_item)
                     showPereshiv(slot)
                 }
@@ -541,17 +545,19 @@ function showPereshiv(slot) {
         var tooltip = document.createElement('div');
         tooltip.className = 'tooltip';
         modalAccs.appendChild(tooltip);
-
         items.forEach(item => {
             var img = document.createElement('img');
             img.src = `./imgs/${slot}/${item.name}.png`;
             img.setAttribute('data-yellow', JSON.stringify(item.yellow));
             img.style.position = 'relative';
 
-
-
             img.addEventListener('click', function () {
                 current_item.dataset.yellow = this.getAttribute('data-yellow');
+                var img_temp = document.createElement('img');
+                img_temp.src = current_item.src;
+                img_temp.className = "default-accs"
+                current_item.src = `./imgs/${slot}/${item.name}.png`;
+                $(current_item).closest('.grid-item').append(img_temp)
                 modalOverlay.style.display = 'none';
                 tooltip.style.display = 'none';
                 updateStats();
@@ -560,7 +566,6 @@ function showPereshiv(slot) {
                     modalAccs.removeChild(modalAccs.firstChild);
                 }
             });
-
 
             img.addEventListener('mouseenter', function (event) {
                 var yellowData = JSON.parse(this.getAttribute('data-yellow'));
@@ -606,13 +611,12 @@ trash.addEventListener('drop', (e) => {
     const imgHtml = e.dataTransfer.getData('img-html');
 
     if (imgHtml) {
-
         document.querySelectorAll('.grid-item img').forEach(img => {
             if (img.outerHTML === imgHtml) {
                 var gridItem = $(img).closest('.grid-item');
-                $(gridItem).find('.tooltip').text($(gridItem).attr('ru-name'))
-                $(gridItem).find('.tooltip').css('display', 'none')
-                img.parentElement.removeChild(img);
+                $(gridItem).find('img').remove();
+                $(gridItem).find('.tooltip').text($(gridItem).attr('ru-name'));
+                $(gridItem).find('.tooltip').css('display', 'none');
             }
         });
     }
@@ -711,7 +715,7 @@ $(document).ready(function () {
         buttons.forEach(function (button) {
             var $button = $('<button class="btn">' + button.text + '</button>');
             $button.on('click', function () {
-                var item = $gridItem.find('img')[0]
+                var item = $gridItem.find('img.main')[0]
                 var tooltip = $gridItem.find('.tooltip')[0]
                 $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
                 if (item != undefined) {
@@ -739,7 +743,7 @@ $(document).ready(function () {
     $('.btn.nashivkabronik').on('click', function () {
 
         var $gridItem = $(this).closest('.grid-item');
-        var item = $gridItem.find('img')[0]
+        var item = $gridItem.find('img.main')[0]
         var tooltip = $gridItem.find('.tooltip')[0]
         $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
         if (item != undefined) {
