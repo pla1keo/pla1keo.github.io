@@ -83,6 +83,7 @@ body {
 .grid-item img {
     max-width: 100%;
     max-height: 100%;
+    cursor: pointer;
 }
 
 .grid-text {
@@ -321,10 +322,30 @@ body {
     }
 }
 
+@media (min-width: 1281px) and (max-width: 1399px) { /* ??? */
+    .info span {
+        font-size: 14px;
+    }
+    .btn, .grid-item span {
+        width: 1vw;
+        height: 1vw;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+    .copyright {
+        font-size: 10px; 
+    }
+}
+
 
 @media (max-width: 1280px) { /* HD */
     .info span {
         font-size: 14px; 
+    }
+
+    .fan-content div {
+        width: 8vw;
+        font-size: 10px;
     }
     .btn {
         width: 1vw;
