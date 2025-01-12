@@ -1,3 +1,11 @@
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+if (isMobileDevice()) {
+    window.location.href = 'm-index.html';
+}
+
 const items = [
     {
         imageSrc: './imgs/face/netri.png',
