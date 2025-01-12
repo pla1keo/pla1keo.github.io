@@ -125,10 +125,17 @@ const items = [
         upg: 'krit',
         yellow: {}
     },
+    {
+        imageSrc: './imgs/head/tikva.png',
+        stats: { deff: 2, damage: 2, krit: 2 },
+        upg: 'hpmin',
+        yellow: {}
+    },
 ];
 
 var RuTypes = {
     deff: 'Защита',
+    hpmin: 'HP в мин.',
     damage: 'Урон',
     krit: 'Удача',
     hpmax: 'Макс. HP',
