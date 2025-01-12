@@ -294,6 +294,22 @@ body {
     }
 }
 
+@media (min-width: 1400px) and (max-width: 1700px) { /* ??? */
+    .info span {
+        font-size: 14px;
+    }
+    .btn, .grid-item span {
+        width: 1vw;
+        height: 1vw;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+    .copyright {
+        font-size: 10px; 
+    }
+}
+
+
 @media (max-width: 1280px) { /* HD */
     .info span {
         font-size: 14px; 

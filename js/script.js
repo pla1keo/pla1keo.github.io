@@ -615,17 +615,6 @@ trash.addEventListener('drop', (e) => {
 });
 
 $(document).ready(function () {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    console.log(`Ширина экрана: ${width}px`);
-    console.log(`Высота экрана: ${height}px`);
-
-    const screenWidth = screen.width;
-    const screenHeight = screen.height;
-    console.log(`Полная ширина экрана: ${screenWidth}px`);
-    console.log(`Полная высота экрана: ${screenHeight}px`);
-
-
     $('.btn.plus').on('click', function () {
 
         let span = $(this).closest('.grid-text').find('span');
