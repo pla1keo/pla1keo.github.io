@@ -634,7 +634,11 @@ const myArray = [
     'homelander',
     'rilay',
     'superman',
-    'aura'
+    'aura',
+    'power',
+    'lego',
+    'mafia',
+    'woozie'
 ]
 
 $(document).ready(function () {
