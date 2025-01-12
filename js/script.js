@@ -249,7 +249,7 @@ function updateStats() {
                                 stats.hpmax = 0;
                             }
                             stats.armourmax += 9;
-                            stats.hpmax += 5;
+                            stats.hpmax += 4;
                         }
                     }
                 }
