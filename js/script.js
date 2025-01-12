@@ -370,6 +370,7 @@ document.querySelectorAll('.grid-item').forEach(item => {
                     } else {
                         current_item = item.appendChild(imgElement);
                     }
+                    $(item).find('.tooltip').text($(item).attr('ru-name'))
                     const slot = getSlotNameFromItem(current_item)
                     showPereshiv(slot)
                 }
