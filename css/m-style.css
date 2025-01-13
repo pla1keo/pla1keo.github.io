@@ -9,14 +9,21 @@ body {
     height: 100vh;
 }
 
+/* .fan-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
 .fan-content img {
-    width: 5vw; 
+    width: 15vw; 
     margin-left: 10px; 
     margin-top: 10px;
 }
 
 .fan-content div {
-    width: 6.5vw;
+    /* width: 6.5vw; */
+    text-align: center;
     font-size: 10px;
     margin-left: 10px;
 }
@@ -24,7 +31,7 @@ body {
 .container {
     display: flex;
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .left-section,
@@ -37,8 +44,6 @@ body {
 
 .left-section {
     flex-direction: column;
-
-
     padding: 20px;
 }
 
@@ -50,6 +55,10 @@ body {
     margin-bottom: 20px;
 }
 
+#character-image {
+    pointer-events: none;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -57,8 +66,8 @@ body {
 }
 
 .grid-item {
-    width: 6vw;
-    height: 6vw;
+    width: 25vw;
+    height: 25vw;
     background-color: #333333;
     display: flex;
     flex-direction: column;
@@ -107,8 +116,8 @@ body {
 
 .btn {
     padding: 0;
-    width: 1.2vw;
-    height: 1.2vw;
+    width: 4.5vw;
+    height: 4.5vw;
     background-color: #555555;
     color: #ffffff;
     border: none;
@@ -127,7 +136,7 @@ body {
     background-color: #999999;
 }
 
-#closeModal {
+#closeModal, #yesDelete, #noDelete {
     width: 150px;
     height: 40px;
     background-color: #555555;
@@ -152,23 +161,27 @@ body {
 .right-section {
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
+    gap: 10px;
 }
 
 .mini-container {
     width: 100%;
-    height: 10%;
+    height: 10vh;
     background-color: #333333;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Изменено для горизонтальной прокрутки */
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 14px;
+    padding-left: 10px;
     font-weight: bold;
+    overflow-x: auto; /* Добавлено для горизонтальной прокрутки */
+    white-space: nowrap; /* Предотвращает перенос строк */
 }
 
 .info span {
-    font-size: 16px;
+    font-size: 0.8em;
     line-height: 1.6;
 }
 
@@ -228,8 +241,10 @@ body {
 }
 
 .mini-container img {
-    width: 10%;
+    width: 20%;
     cursor: pointer;
+    display: inline-block; /* Элементы внутри контейнера */
+    margin-right: 10px; /* Отступ между элементами */
 }
 
 .modal-overlay {
@@ -284,90 +299,5 @@ body {
 .copyright {
     font-size: 13px; 
     margin-top: 25px;
-}
-
-@media (min-width: 1921px) { /* 2K */
-    .info span {
-        font-size: 24px;
-    }
-    .btn, .grid-item span {
-        font-size: 18px;
-    }
-    .tooltip {
-        font-size: 18px;
-    }
-    .copyright {
-        font-size: 15px; 
-    }
-}
-
-@media (min-width: 2561px) { /* 4K */
-    .info span {
-        font-size: 32px;
-    }
-    .btn, .grid-item span {
-        font-size: 30px;
-    }
-    .btn {
-        border-radius: 8px;
-    }
-    .copyright {
-        font-size: 20px; 
-    }
-}
-
-@media (min-width: 1400px) and (max-width: 1700px) { /* ??? */
-    .info span {
-        font-size: 14px;
-    }
-    .btn, .grid-item span {
-        width: 1vw;
-        height: 1vw;
-        border-radius: 3px;
-        font-size: 10px;
-    }
-    .copyright {
-        font-size: 10px; 
-    }
-}
-
-@media (min-width: 1281px) and (max-width: 1399px) { /* ??? */
-    .info span {
-        font-size: 14px;
-    }
-    .btn, .grid-item span {
-        width: 1vw;
-        height: 1vw;
-        border-radius: 3px;
-        font-size: 10px;
-    }
-    .copyright {
-        font-size: 10px; 
-    }
-}
-
-
-@media (max-width: 1280px) { /* HD */
-    .info span {
-        font-size: 14px; 
-    }
-
-    .fan-content div {
-        width: 8vw;
-        font-size: 10px;
-    }
-    .btn {
-        width: 1vw;
-        height: 1vw;
-        border-radius: 3px;
-    }
-    .btn, .grid-item span {
-        font-size: 8px;
-    }
-    .tooltip {
-        font-size: 10px;
-    }
-    .copyright {
-        font-size: 10px; 
-    }
+    text-align: center;
 }

@@ -1,132 +1,142 @@
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+console.log('its: ' + isMobileDevice())
+
+if (!isMobileDevice()) {
+    window.location.href = '../';
+}
+
 const items = [
     {
-        imageSrc: './imgs/face/netri.png',
+        imageSrc: '../imgs/face/netri.png',
         stats: { deff: 2, krit: 25 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/face/maskinvisible.png',
+        imageSrc: '../imgs/face/maskinvisible.png',
         stats: { deff: 0, oglysh: 3 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/shoulder/magshar2.png',
+        imageSrc: '../imgs/shoulder/magshar2.png',
         stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/shoulder/energoshar.png',
+        imageSrc: '../imgs/shoulder/energoshar.png',
         stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, neoglysh: 10 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/case/enegrochem.png',
+        imageSrc: '../imgs/case/enegrochem.png',
         stats: { damage: 3, oglysh: 13, neoglysh: 4 },
         upg: '',
         yellow: {}
     },
     {
-        imageSrc: './imgs/case/chem.png',
+        imageSrc: '../imgs/case/chem.png',
         stats: { oglysh: 6 },
         upg: '',
         yellow: {}
     },
     {
-        imageSrc: './imgs/armour/bronik.png',
+        imageSrc: '../imgs/armour/bronik.png',
         stats: { deff: 2, krit: 1, armourmax: 0 },
         upg: 'armour',
         yellow: {}
     },
     {
-        imageSrc: './imgs/armour/genbronik.png',
+        imageSrc: '../imgs/armour/genbronik.png',
         stats: { deff: 2, damage: 2, krit: 1, armourmax: 35 },
         upg: 'armour',
         yellow: {}
     },
     {
-        imageSrc: './imgs/hand/duff.png',
+        imageSrc: '../imgs/hand/duff.png',
         stats: { damage: 4 },
         upg: 'damage',
         yellow: {}
     },
     {
-        imageSrc: './imgs/hand/fraps.png',
+        imageSrc: '../imgs/hand/fraps.png',
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'damage',
         yellow: {}
     },
     {
-        imageSrc: './imgs/head/deadinside.png',
+        imageSrc: '../imgs/head/deadinside.png',
         stats: { damage: 1, krit: 10, oglysh: 1 },
         upg: 'krit',
         yellow: {}
     },
     {
-        imageSrc: './imgs/spine/tor.png',
+        imageSrc: '../imgs/spine/tor.png',
         stats: { damage: 4 },
         upg: 'damage',
         yellow: {}
     },
     {
-        imageSrc: './imgs/spine/rbt.png',
+        imageSrc: '../imgs/spine/rbt.png',
         stats: { deff: 4 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/spine/energoshield.png',
+        imageSrc: '../imgs/spine/energoshield.png',
         stats: { deff: 4, hpmax: 10, opyan: 2 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/shoulder/delorean.png',
+        imageSrc: '../imgs/shoulder/delorean.png',
         stats: { deff: 0, krit: 10, armourmax: 20, oglysh: 4 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/shoulder/pexpress.png',
+        imageSrc: '../imgs/shoulder/pexpress.png',
         stats: { deff: 0, krit: 10, armourmax: 20, oglysh: 4 },
         upg: 'deff',
         yellow: {}
     },
     {
-        imageSrc: './imgs/breast/mahi.png',
+        imageSrc: '../imgs/breast/mahi.png',
         stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
         upg: 'damage',
         yellow: {}
     },
     {
-        imageSrc: './imgs/breast/energomahi.png',
+        imageSrc: '../imgs/breast/energomahi.png',
         stats: { deff: 4, damage: 2, krit: 12, armourmax: 25 },
         upg: 'damage',
         yellow: { damage: 2, hpmax: 5 }
     },
     {
-        imageSrc: './imgs/head/bad.png',
+        imageSrc: '../imgs/head/bad.png',
         stats: { krit: 10 },
         upg: 'krit',
         yellow: {}
     },
     {
-        imageSrc: './imgs/head/ironman.png',
+        imageSrc: '../imgs/head/ironman.png',
         stats: { krit: 2 },
         upg: 'krit',
         yellow: {}
     },
     {
-        imageSrc: './imgs/head/pepe.png',
+        imageSrc: '../imgs/head/pepe.png',
         stats: { krit: 1 },
         upg: 'krit',
         yellow: {}
     },
     {
-        imageSrc: './imgs/head/tikva.png',
+        imageSrc: '../imgs/head/tikva.png',
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'hpmin',
         yellow: {}
@@ -145,6 +155,17 @@ var RuTypes = {
     neoglysh: 'Шанс избежать оглушения',
     otrazh: 'Отражение урона'
 };
+
+var RuSlots = {
+    head: 'Голова',
+    face: 'Лицо',
+    hand: 'Рука',
+    breast: 'Грудь',
+    shoulder: 'Плечо',
+    spine: 'Спина',
+    armour: 'Бронежилет',
+    case: 'Чемодан'
+}
 
 function getSlotNameFromItem(item) {
     const match = item.getAttribute('src').match(/\.\/imgs\/([^/]+)\//);
@@ -321,33 +342,86 @@ gridItems.forEach(item => {
     tooltip.innerHTML = ruName;
 
     item.addEventListener('mouseover', () => {
+        document.querySelectorAll('.tooltip').forEach(tooltip_ => {
+            tooltip_.style.display = 'none';
+        })
         tooltip.style.display = 'block';
     });
 
     item.addEventListener('mouseout', () => {
+        document.querySelectorAll('.tooltip').forEach(tooltip_ => {
+            tooltip_.style.display = 'none';
+        })
         tooltip.style.display = 'none';
     });
 });
 
-
 document.querySelectorAll('.mini-container img').forEach(img => {
-    img.setAttribute('draggable', true);
+    // img.setAttribute('draggable', true);
 
-    img.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('slot-name', img.parentElement.getAttribute('slot-name'));
-        e.dataTransfer.setData('img-html', img.outerHTML);
-        img.classList.add('dragging');
-    });
+    img.addEventListener('click', function () {
+        addAccs(img.parentElement.getAttribute('slot-name'), img.outerHTML)
+    })
 
-    img.addEventListener('dragend', () => {
-        img.classList.remove('dragging');
-    });
+    // img.addEventListener('dragstart', (e) => {
+    //     e.dataTransfer.setData('slot-name', img.parentElement.getAttribute('slot-name'));
+    //     e.dataTransfer.setData('img-html', img.outerHTML);
+    //     img.classList.add('dragging');
+    // });
+
+    // img.addEventListener('dragend', () => {
+    //     img.classList.remove('dragging');
+    // });
 });
 
 var current_item;
 var itemForNashivka;
 
+function addAccs(slot_name, imgHtml) {
+    var item = $(`.grid-item#${slot_name}`).get(0);
+    if (imgHtml) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = imgHtml.trim();
+        const imgElement = tempDiv.querySelector('img.main');
+        if (slot_name == item.getAttribute("id")) {
+            if (imgElement) {
+                const existingImg = item.querySelector('img.main');
+                if (existingImg) {
+                    existingImg.outerHTML = imgHtml;
+                    $(item).find('img.default-accs').remove();
+                } else {
+                    item.appendChild(imgElement);
+                }
+                current_item = $(item).find('img')[0]
+                current_item.className = 'main'
+                $(item).find('.tooltip').text($(item).attr('ru-name'))
+                console.log(current_item)
+                const slot = getSlotNameFromItem(current_item)
+                showPereshiv(slot)
+            }
+        }
+        updateStats();
+    }
+
+    const img = item.querySelector('img');
+    if (img) {
+        img.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('img-html', img.outerHTML);
+            e.dataTransfer.effectAllowed = "move";
+        });
+    }
+}
+
+var temp_info = {};
+
 document.querySelectorAll('.grid-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        temp_info.html = img.outerHTML
+        temp_info.dom = img
+        youWannaDelete()
+    })
+
     item.addEventListener('dragover', (e) => {
         e.preventDefault();
     });
@@ -547,7 +621,7 @@ function showPereshiv(slot) {
         modalAccs.appendChild(tooltip);
         items.forEach(item => {
             var img = document.createElement('img');
-            img.src = `./imgs/${slot}/${item.name}.png`;
+            img.src = `../imgs/${slot}/${item.name}.png`;
             img.setAttribute('data-yellow', JSON.stringify(item.yellow));
             img.style.position = 'relative';
 
@@ -556,7 +630,7 @@ function showPereshiv(slot) {
                 var img_temp = document.createElement('img');
                 img_temp.src = current_item.src;
                 img_temp.className = "default-accs"
-                current_item.src = `./imgs/${slot}/${item.name}.png`;
+                current_item.src = `../imgs/${slot}/${item.name}.png`;
                 $(current_item).closest('.grid-item').append(img_temp)
                 modalOverlay.style.display = 'none';
                 tooltip.style.display = 'none';
@@ -591,25 +665,15 @@ function showPereshiv(slot) {
     }
 }
 
-const trash = document.querySelector('.trash');
-const trashTooltip = document.querySelector('#trashtooltip')
+function youWannaDelete() {
+    const modalDelete = document.getElementById('modalDelete');
+    modalDelete.style.display = 'block'
+    const img = temp_info.dom
+    const gridItem = $(img).closest('.grid-item')
+    $('#modalDelete .modal h2').text(`Вы уверены что хотите удалить аксессуар из слота ${RuSlots[gridItem.attr('id')]}?`)
+}
 
-trash.addEventListener('mouseover', () => {
-    trashTooltip.style.display = 'block';
-
-});
-
-trash.addEventListener('mouseout', () => {
-    trashTooltip.style.display = 'none';
-});
-trash.addEventListener('dragover', (e) => {
-    e.preventDefault();
-});
-
-trash.addEventListener('drop', (e) => {
-    e.preventDefault();
-    const imgHtml = e.dataTransfer.getData('img-html');
-
+function reallyDelete(imgHtml) {
     if (imgHtml) {
         document.querySelectorAll('.grid-item img').forEach(img => {
             if (img.outerHTML === imgHtml) {
@@ -620,8 +684,40 @@ trash.addEventListener('drop', (e) => {
             }
         });
     }
-    updateStats();
-});
+    updateStats()
+}
+
+// const trash = document.querySelector('.trash');
+// const trashTooltip = document.querySelector('#trashtooltip')
+
+// trash.addEventListener('mouseover', () => {
+//     trashTooltip.style.display = 'block';
+
+// });
+
+// trash.addEventListener('mouseout', () => {
+//     trashTooltip.style.display = 'none';
+// });
+// trash.addEventListener('dragover', (e) => {
+//     e.preventDefault();
+// });
+
+// trash.addEventListener('drop', (e) => {
+//     e.preventDefault();
+//     const imgHtml = e.dataTransfer.getData('img-html');
+
+//     if (imgHtml) {
+//         document.querySelectorAll('.grid-item img').forEach(img => {
+//             if (img.outerHTML === imgHtml) {
+//                 var gridItem = $(img).closest('.grid-item');
+//                 $(gridItem).find('img').remove();
+//                 $(gridItem).find('.tooltip').text($(gridItem).attr('ru-name'));
+//                 $(gridItem).find('.tooltip').css('display', 'none');
+//             }
+//         });
+//     }
+//     updateStats();
+// });
 
 function getRandomElement(arr) {
     if (arr.length === 0) {
@@ -660,7 +756,7 @@ $(document).ready(function () {
         } while (randomElement === previousElement);
 
         previousElement = randomElement;
-        $('#character-image').attr('src', `./imgs/characters/${randomElement}.png`);
+        $('#character-image').attr('src', `../imgs/characters/${randomElement}.png`);
     }
 
     updateCharacterImage();
@@ -672,15 +768,8 @@ $(document).ready(function () {
         updateCharacterImage();
     });
 
-    character.on('mouseover', function () {
-        tooltip.show();
-    });
-    
-    character.on('mouseout', function () {
-        tooltip.hide();
-    });
-
-    $('.btn.plus').on('click', function () {
+    $('.btn.plus').on('click', function (e) {
+        e.stopPropagation();
 
         let span = $(this).closest('.grid-text').find('span');
         let currentValue = parseInt(span.text().replace('+', ''));
@@ -691,7 +780,8 @@ $(document).ready(function () {
     });
 
 
-    $('.btn.minus').on('click', function () {
+    $('.btn.minus').on('click', function (e) {
+        e.stopPropagation();
 
         let span = $(this).closest('.grid-text').find('span');
         let currentValue = parseInt(span.text().replace('+', ''));
@@ -702,7 +792,8 @@ $(document).ready(function () {
     });
 
 
-    $('.btn.nashivka').on('click', function () {
+    $('.btn.nashivka').on('click', function (e) {
+        e.stopPropagation();
 
         var $gridItem = $(this).closest('.grid-item');
         var $buttonContainer = $('<div class="button-container"></div>');
@@ -714,7 +805,8 @@ $(document).ready(function () {
         ];
         buttons.forEach(function (button) {
             var $button = $('<button class="btn">' + button.text + '</button>');
-            $button.on('click', function () {
+            $button.on('click', function (e) {
+                e.stopPropagation();
                 var item = $gridItem.find('img.main')[0]
                 var tooltip = $gridItem.find('.tooltip')[0]
                 $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
@@ -740,7 +832,8 @@ $(document).ready(function () {
     });
 
 
-    $('.btn.nashivkabronik').on('click', function () {
+    $('.btn.nashivkabronik').on('click', function (e) {
+        e.stopPropagation();
 
         var $gridItem = $(this).closest('.grid-item');
         var item = $gridItem.find('img.main')[0]
@@ -759,8 +852,19 @@ $(document).ready(function () {
     const closeModalButton = document.getElementById('closeModal');
     const testButton = document.getElementById('addYellowStats');
     const modalOverlay = document.getElementById('modalOverlay');
-
-
+    const modalDelete = document.getElementById('modalDelete');
+    
+    const yesDeleteButton = document.getElementById('yesDelete');
+    const noDeleteButton = document.getElementById('noDelete');
+    
+    yesDeleteButton.addEventListener('click', () => {
+        modalDelete.style.display = 'none';
+        reallyDelete(temp_info.html)
+    });
+    
+    noDeleteButton.addEventListener('click', () => {
+        modalDelete.style.display = 'none';
+    });
 
     closeModalButton.addEventListener('click', () => {
         modalOverlay.style.display = 'none';

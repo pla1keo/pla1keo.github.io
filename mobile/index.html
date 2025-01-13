@@ -13,10 +13,6 @@
 <body>
     <div style="position: absolute;" class="fan-content">
         <img src="../imgs/icon.png">
-        <div>
-            Фан-контент. Данный сайт не принадлежит компании Arizona Games.
-            Сайт сделан для фанатов, для удобного подбора аксессуаров.
-        </div>
     </div>
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
@@ -25,12 +21,19 @@
             <button id="closeModal">Без переноса</button>
         </div>
     </div>
+    <div class="modal-overlay" id="modalDelete">
+        <div class="modal">
+            <h2>Вы уверены что хотите удалить аксессуар из слота [SLOT_NAME]?</h2>
+            <button id="yesDelete">Да</button>
+            <button id="noDelete">Нет</button>
+        </div>
+    </div>
     <div class="container">
         <div class="left-section">
             <div class="character">
                 <div style="cursor: pointer; position: relative;" id="character">
-                    <img src="../imgs/characters/template.png" alt="Character" style="width: 20vw" id="character-image">
-                    <div class="tooltip" style="bottom: 101%;">Нажмите чтобы сменить персонажа</div>
+                    <img src="../imgs/characters/template.png" alt="Character" style="width: 35vw" id="character-image">
+                    <!-- <div class="tooltip" style="bottom: 101%;">Нажмите чтобы сменить персонажа</div> -->
                 </div>
                 <div class="info">
                     <span class="highlight white">Защита: <span class="highlight" id="deff">[-0%
@@ -126,13 +129,11 @@
                     <div class="tooltip"></div>
                 </div>
             </div>
-
-            <span class="copyright">© plalkeo, 2025</span>
         </div>
 
-        <div class="trash">
+        <!-- <div class="trash">
             <div class="tooltip" id="trashtooltip">Перетащите сюда предмет, чтобы его выкинуть!</div>
-        </div>
+        </div> -->
 
         <div class="right-section">
             <div class="mini-container" slot-name="head">
@@ -152,6 +153,14 @@
             <div class="mini-container" slot-name="case">
             </div>
         </div>
+
+        <div class="fan-content">
+            <div>
+                Фан-контент. Данный сайт не принадлежит компании Arizona Games.
+                Сайт сделан для фанатов, для удобного подбора аксессуаров.
+            </div>
+        </div>
+        <span class="copyright">© plalkeo, 2025</span>
     </div>
 
     <script src="../js/m-script.js"></script>
