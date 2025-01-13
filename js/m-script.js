@@ -2,8 +2,6 @@ function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
 
-console.log('its: ' + isMobileDevice())
-
 if (!isMobileDevice()) {
     window.location.href = '../';
 }
