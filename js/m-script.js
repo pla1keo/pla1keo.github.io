@@ -571,7 +571,12 @@ function showPereshiv(slot) {
             items = []
             break;
         case 'shoulder':
-            items = []
+            items = [
+                {
+                    name: 'arkanaio',
+                    yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
+                }
+            ]
             break;
         case 'spine':
             items = [
