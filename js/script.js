@@ -398,7 +398,6 @@ function addAccs(slot_name, imgHtml) {
                 current_item = $(item).find('img')[0]
                 current_item.className = 'main'
                 $(item).find('.tooltip').text($(item).attr('ru-name'))
-                console.log(current_item)
                 const slot = getSlotNameFromItem(current_item)
                 showPereshiv(slot)
             }
@@ -452,7 +451,6 @@ document.querySelectorAll('.grid-item').forEach(item => {
                     current_item = $(item).find('img')[0]
                     current_item.className = 'main'
                     $(item).find('.tooltip').text($(item).attr('ru-name'))
-                    console.log(current_item)
                     const slot = getSlotNameFromItem(current_item)
                     showPereshiv(slot)
                 }
