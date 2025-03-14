@@ -474,6 +474,10 @@ function showPereshiv(slot) {
         case 'head':
             items = [
                 {
+                    name: 'nimbgearvlast',
+                    yellow: { deff: 3, damage: 3, krit: 1, hpmax: 19 }
+                },
+                {
                     name: 'tango',
                     yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
                 },
@@ -611,6 +615,10 @@ function showPereshiv(slot) {
                 {
                     name: 'aegis',
                     yellow: { damage: 2, hpmax: 8, armourmax: 8, otrazh: 1 }
+                },
+                {
+                    name: 'trax',
+                    yellow: { damage: 2, hpmax: 7, armourmax: 7, otrazh: 1 }
                 },
             ]
             break;
