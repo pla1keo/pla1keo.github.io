@@ -147,6 +147,24 @@ const items = [
         upg: 'hpmin',
         yellow: {}
     },
+    {
+        imageSrc: `${basePath}imgs/hand/azinot.png`,
+        stats: { deff: 2, damage: 2, krit: 2 },
+        upg: 'damage',
+        yellow: {}
+    },
+    {
+        imageSrc: `${basePath}imgs/breast/magsphere.png`,
+        stats: { deff: 2, krit: 1 },
+        upg: 'krit',
+        yellow: {}
+    },
+    {
+        imageSrc: `${basePath}imgs/face/sphereoverhead.png`,
+        stats: { deff: 2, damage: 2, krit: 2 },
+        upg: 'deff',
+        yellow: {}
+    },
 ];
 
 var RuTypes = {
