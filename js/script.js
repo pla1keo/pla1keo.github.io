@@ -165,6 +165,12 @@ const items = [
         upg: 'deff',
         yellow: {}
     },
+    {
+        imageSrc: `${basePath}imgs/head/jetpack.png`,
+        stats: { deff: 2, damage: 2, krit: 2 },
+        upg: 'hpmin',
+        yellow: {}
+    },
 ];
 
 var RuTypes = {
