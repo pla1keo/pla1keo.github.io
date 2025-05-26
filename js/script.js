@@ -715,7 +715,7 @@ if (isMobileDevice()) {
         modalDelete.style.display = 'block'
         const img = temp_info.dom
         const gridItem = $(img).closest('.grid-item')
-        $('#modalDelete .modal h2').text(`Вы уверены что хотите удалить аксессуар из слота ${RuSlots[gridItem.attr('id')]}?`)
+        $('#modalDelete .modal h2').text(`Вы уверены что хотите удалить аксессуар из слота "${RuSlots[gridItem.attr('id')]}"?`)
     }
     
     function reallyDelete(imgHtml) {
