@@ -300,7 +300,7 @@ function updateStats() {
                 } else {
                     if (zatochka >= 4) {
                         stats[type] += (zatochka - 3) * upgrader;
-                        if (zatochka == 13) {
+                        if (zatochka >= 13) {
                             if (stats.armourmax == undefined) {
                                 stats.armourmax = 0;
                             }
@@ -309,6 +309,17 @@ function updateStats() {
                             }
                             stats.armourmax += 9;
                             stats.hpmax += 4;
+                        }
+                        if (zatochka == 14) {
+                            if (stats.otrazh == undefined) {
+                                stats.otrazh = 0
+                            }
+                            if (stats.hpmin == undefined) {
+                                stats.hpmin = 0
+                            }
+                            stats.armourmax += 5;
+                            stats.hpmin += 3;
+                            stats.otrazh += 1;
                         }
                     }
                 }
@@ -830,7 +841,7 @@ $(document).ready(function () {
 
         let span = $(this).closest('.grid-text').find('span');
         let currentValue = parseInt(span.text().replace('+', ''));
-        if (currentValue < 13) {
+        if (currentValue < 14) {
             span.text(`+${currentValue + 1}`);
             updateStats();
         }
