@@ -22,6 +22,12 @@ const items = [
         yellow: {}
     },
     {
+        imageSrc: `${basePath}imgs/face/cyberpunkvr.png`,
+        stats: { deff: 2, krit: 25 },
+        upg: 'deff',
+        yellow: {}
+    },
+    {
         imageSrc: `${basePath}imgs/face/maskinvisible.png`,
         stats: { deff: 0, oglysh: 3 },
         upg: 'deff',
@@ -82,13 +88,43 @@ const items = [
         yellow: {}
     },
     {
+        imageSrc: `${basePath}imgs/head/endercube.png`,
+        stats: { damage: 1, krit: 10, oglysh: 1 },
+        upg: 'krit',
+        yellow: {}
+    },
+    {
         imageSrc: `${basePath}imgs/spine/tor.png`,
         stats: { damage: 4 },
         upg: 'damage',
         yellow: {}
     },
     {
+        imageSrc: `${basePath}imgs/spine/jasehummer.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
+        yellow: {}
+    },
+    {
         imageSrc: `${basePath}imgs/spine/rbt.png`,
+        stats: { deff: 4 },
+        upg: 'deff',
+        yellow: {}
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/ka.png`,
+        stats: { deff: 4 },
+        upg: 'deff',
+        yellow: {}
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/magmaxe.png`,
+        stats: { deff: 4 },
+        upg: 'deff',
+        yellow: {}
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/icesword.png`,
         stats: { deff: 4 },
         upg: 'deff',
         yellow: {}
@@ -169,6 +205,12 @@ const items = [
         imageSrc: `${basePath}imgs/head/jetpack.png`,
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'hpmin',
+        yellow: {}
+    },
+    {
+        imageSrc: `${basePath}imgs/hand/magaxe.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
         yellow: {}
     },
 ];
@@ -541,6 +583,10 @@ function showPereshiv(slot) {
         case 'face':
             items = [
                 {
+                    name: 'respik',
+                    yellow: { deff: 1, damage: 1 }
+                },
+                {
                     name: 'cherep',
                     yellow: { damage: 2, armourmax: 10 }
                 },
@@ -635,6 +681,10 @@ function showPereshiv(slot) {
                 {
                     name: 'spiderlegs',
                     yellow: { deff: 1, damage: 1 }
+                },
+                {
+                    name: 'deltik',
+                    yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'battlefury',
@@ -799,7 +849,8 @@ const myArray = [
     'power',
     'lego',
     'mafia',
-    'woozie'
+    'woozie',
+    'yoda'
 ]
 
 $(document).ready(function () {
