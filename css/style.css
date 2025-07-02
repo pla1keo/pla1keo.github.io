@@ -258,6 +258,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
+    max-width: 80%;
+    max-height: 80%;
 }
 
 .modal div img {
@@ -377,4 +379,78 @@ body {
     .copyright {
         font-size: 10px; 
     }
+}
+
+.modal-skins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-bottom: 15px;
+}
+
+.modal-skin {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 8px;
+  transition: border-color 0.25s ease;
+  background-color: #1a1a1a;
+}
+
+.modal-skin:hover {
+  border-color: #757575;
+  background: #3f3f3f;
+}
+
+.modal-skin img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+.modal-skin .skin-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.modal-skin .skin-stats {
+  font-size: 12px;
+  color: yellow;
+  text-align: center;
+}
+
+.modal-skin .skin-stats span {
+  display: block;
+  margin-bottom: 2px;
+}
+
+#closeSkinModal, #closeNoneSkinModal {
+    width: 150px;
+    height: 40px;
+    background-color: #555555;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#closeSkinModal:hover, #closeNoneSkinModal:hover {
+    background-color: #777777;
+}
+
+#closeSkinModal:active, #closeNoneSkinModal:active {
+    background-color: #999999;
 }

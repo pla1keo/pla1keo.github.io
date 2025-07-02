@@ -17,10 +17,24 @@
         <img id="tg" src="../imgs/tg.png" onclick="window.open('https://t.me/acssets');">
     </div>
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
+        <div class="modal" style="position: relative;">
+            <button id="closeXModal"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
             <h2>Выберите аксессуар на который совершить перенос</h2>
             <div class="modal-accs"></div>
             <button id="closeModal">Без переноса</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalSkinsOverlay" style="display:none;">
+        <div class="modal" style="position: relative;">
+            <button id="closeXModalSkin"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
+            <h2>Выберите скин:</h2>
+            <div class="modal-skins"></div>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <button id="closeSkinModal">Стандартный скин (+12)</button>
+                <button id="closeNoneSkinModal">Под организацию</button>
+            </div>
         </div>
     </div>
     <div class="modal-overlay" id="modalDelete">
@@ -35,7 +49,7 @@
             <div class="character">
                 <div style="cursor: pointer; position: relative;" id="character">
                     <img src="../imgs/characters/template.png" alt="Character" style="width: 35vw" id="character-image">
-                    <!-- <div class="tooltip" style="bottom: 101%;">Нажмите чтобы сменить персонажа</div> -->
+                    <!-- <div class="tooltip" style="bottom: 101%;">Нажмите чтобы выбрать скин</div> -->
                 </div>
                 <div class="info">
                     <span class="highlight white">Защита: <span class="highlight" id="deff">[-0%
