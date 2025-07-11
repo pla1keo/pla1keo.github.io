@@ -185,6 +185,7 @@ body {
     font-weight: bold;
     overflow-x: auto; /* Добавлено для горизонтальной прокрутки */
     white-space: nowrap; /* Предотвращает перенос строк */
+    border-radius: 10px;
 }
 
 .info span {

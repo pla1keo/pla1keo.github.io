@@ -51,6 +51,13 @@ const items = [
         ru_name: 'Энергетический воздушный шар'
     },
     {
+        imageSrc: `${basePath}imgs/case/chem.png`,
+        stats: { oglysh: 6 },
+        upg: '',
+        yellow: {},
+        ru_name: 'Дьявольский чемодан'
+    },
+    {
         imageSrc: `${basePath}imgs/case/enegrochem.png`,
         stats: { damage: 3, oglysh: 13, neoglysh: 4 },
         upg: '',
@@ -58,11 +65,12 @@ const items = [
         ru_name: 'Энергетический чемодан'
     },
     {
-        imageSrc: `${basePath}imgs/case/chem.png`,
-        stats: { oglysh: 6 },
+        imageSrc: `${basePath}imgs/case/chemcriminal.png`,
+        stats: { deff: 2, damage: 6, rof: 10, recoil: 10 },
+        buff: { hpmax: 15, armourmax: 15 },
         upg: '',
         yellow: {},
-        ru_name: 'Дьявольский чемодан'
+        ru_name: 'Чемодан криминала'
     },
     {
         imageSrc: `${basePath}imgs/armour/bronik.png`,
@@ -77,6 +85,13 @@ const items = [
         upg: 'armour',
         yellow: {},
         ru_name: 'Генеральский бронежилет'
+    },
+    {
+        imageSrc: `${basePath}imgs/armour/armourgraffiti.png`,
+        stats: { armourmax: 50 },
+        upg: 'armour',
+        yellow: {},
+        ru_name: 'Бронежилет с граффити'
     },
     {
         imageSrc: `${basePath}imgs/hand/duff.png`,
@@ -246,6 +261,48 @@ const items = [
         yellow: {},
         ru_name: 'Магический топор'
     },
+    {
+        imageSrc: `${basePath}imgs/breast/swag.png`,
+        stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Цепь SWAG'
+    },
+    {
+        imageSrc: `${basePath}imgs/breast/swaga.png`,
+        stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Цепь СВАГА'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/baseballbatcompton.png`,
+        stats: { deff: 4, oglysh: 5 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Бейсбольная бита Compton'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/goldmount.png`,
+        stats: { deff: 4, oglysh: 11 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Золотая монтировка'
+    },
+    {
+        imageSrc: `${basePath}imgs/shoulder/piratecompass.png`,
+        stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, neoglysh: 20 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Пиратский компас'
+    },
+    {
+        imageSrc: `${basePath}imgs/shoulder/flyingdutchman.png`,
+        stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, neoglysh: 20 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Летучий голландец'
+    },
 ];
 
 const skins = [
@@ -329,6 +386,26 @@ const skins = [
         yellow: { krit: 2 },
         ru_name: 'Леорик'
     },
+    {
+        imageSrc: `${basePath}imgs/skins/davyjones.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Дейви Джонс'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/thenotoriousbig.png`,
+        yellow: { krit: 2 },
+        ru_name: 'THE NOTORIOUS B.I.G'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/lockdog.png`,
+        yellow: { damage: 2, hpmax: 5, krit: 5 },
+        ru_name: 'Лок Дог'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/skuf.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Скуф'
+    },
 ];
 
 var selectedSkin = null;
@@ -344,6 +421,9 @@ var RuTypes = {
     opyan: 'Шанс опьянения',
     neoglysh: 'Шанс избежать оглушения',
     otrazh: 'Отражение урона',
+    block: 'Блокировка урона',
+    rof: 'Скорострельность',
+    recoil: 'Отдача'
 };
 
 var RuSlots = {
@@ -443,6 +523,9 @@ function updateStats() {
     var opyan = 0;
     var neoglysh = 0;
     var otrazh = 0;
+    var block = 0;
+    var rof = 0;
+    var recoil = 0;
 
     if (selectedSkin) {
         deff += 8;
@@ -463,6 +546,9 @@ function updateStats() {
             opyan += yellow_skin.opyan || 0;
             neoglysh += yellow_skin.neoglysh || 0;
             otrazh += yellow_skin.otrazh || 0;
+            block += yellow_skin.block || 0;
+            rof += yellow_skin.rof || 0;
+            recoil += yellow_skin.recoil || 0;
         }
     }
 
@@ -472,6 +558,7 @@ function updateStats() {
             const stats = JSON.parse(img.dataset.stats);
             const type = img.dataset.upg;
             const yellow_stats = JSON.parse(img.dataset.yellow);
+            const ru_name = img.dataset.ru_name;
             if (img.dataset.nashivka == undefined) {
                 nashivka = {}
             } else {
@@ -502,11 +589,11 @@ function updateStats() {
                             if (stats.otrazh == undefined) {
                                 stats.otrazh = 0
                             }
-                            if (stats.hpmin == undefined) {
-                                stats.hpmin = 0
+                            if (stats.opyan == undefined) {
+                                stats.opyan = 0
                             }
                             stats.armourmax += 5;
-                            stats.hpmin += 3;
+                            stats.opyan += 2;
                             stats.otrazh += 1;
                         }
                     }
@@ -529,6 +616,9 @@ function updateStats() {
             opyan += yellow_stats.opyan || 0;
             neoglysh += yellow_stats.neoglysh || 0;
             otrazh += yellow_stats.otrazh || 0;
+            block += yellow_stats.block || 0;
+            rof += yellow_stats.rof || 0;
+            recoil += yellow_stats.recoil || 0;
 
             deff += stats.deff || 0;
             hpmin += stats.hpmin || 0;
@@ -540,9 +630,13 @@ function updateStats() {
             opyan += stats.opyan || 0;
             neoglysh += stats.neoglysh || 0;
             otrazh += stats.otrazh || 0;
+            block += stats.block || 0;
+            rof += stats.rof || 0;
+            recoil += stats.recoil || 0;
 
-            if (armourmax >= 160) {
-                armourmax = 160;
+            if (ru_name == 'Чемодан криминала') {
+                hpmax = Math.round(hpmax * 1.15);
+                armourmax = Math.round(armourmax * 1.15);
             }
 
             if (deff >= 90) {
@@ -560,6 +654,9 @@ function updateStats() {
     $('span#opyan').text(`[+${opyan}%]`);
     $('span#neoglysh').text(`[+${neoglysh}%]`);
     $('span#otrazh').text(`[-${otrazh}%]`);
+    $('span#block').text(`[${block} раз]`);
+    $('span#rof').text(`[+${rof}% скорострельности]`);
+    $('span#recoil').text(`[-${recoil}% отдачи]`);
 }
 
 const gridItems = document.querySelectorAll('.grid-item');
@@ -730,11 +827,41 @@ function showPereshiv(slot) {
                     name: 'tact',
                     ru_name: 'Тактический шлем',
                     yellow: { deff: 2, armourmax: 10 }
-                }
+                },
+                {
+                    name: 'piratehat1',
+                    ru_name: 'Пиратская шляпа №1',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'piratehat2',
+                    ru_name: 'Пиратская шляпа №2',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'piratehat3',
+                    ru_name: 'Пиратская шляпа №3',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'cherepandkosti',
+                    ru_name: 'Череп и кости',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'crownofpatroni',
+                    ru_name: 'Корона из патрон',
+                    yellow: { krit: 2, neoglysh: 8, otrazh: 2 }
+                },
             ]
             break;
         case 'face':
             items = [
+                {
+                    name: 'energymaskghost',
+                    ru_name: 'Энерго маска Госта',
+                    yellow: { deff: 5, damage: 5, hpmax: 20, opyan: 4, block: 4 }
+                },
                 {
                     name: 'respik',
                     ru_name: 'Респиратор',
@@ -790,6 +917,16 @@ function showPereshiv(slot) {
                     yellow: { deff: 2, damage: 2, hpmax: 5, armourmax: 5, otrazh: 6 }
                 },
                 {
+                    name: 'pirateflashlight',
+                    ru_name: 'Пиратский фонарь',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'banditarbalet',
+                    ru_name: 'Бандитский арбалет',
+                    yellow: { krit: 3, neoglysh: 4, otrazh: 1 }
+                },
+                {
                     name: 'watch1',
                     ru_name: 'Часы \'Panthere de Cartier\'',
                     yellow: { krit: 1, hpmax: 5 }
@@ -823,7 +960,8 @@ function showPereshiv(slot) {
                     name: 'watch7',
                     ru_name: 'Часы \'Casio G-SHOCK\'',
                     yellow: { damage: 1, hpmax: 5 }
-                }
+                },
+                
             ]
             break;
         case 'breast':
@@ -855,6 +993,31 @@ function showPereshiv(slot) {
                     name: 'spiderlegs',
                     ru_name: 'Паучьи лапы',
                     yellow: { deff: 1, damage: 1 }
+                },
+                {
+                    name: 'kosaredrose',
+                    ru_name: 'Коса Красной Розы',
+                    yellow: { damage: 2, hpmax: 8, armourmax: 8, otrazh: 1 }
+                },
+                {
+                    name: 'poyasbalon',
+                    ru_name: 'Пояс с баллончиками',
+                    yellow: { armourmax: 50 }
+                },
+                {
+                    name: 'piratesabers',
+                    ru_name: 'Пиратские сабли',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'piratechest',
+                    ru_name: 'Пиратский сундук',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'seaanchor',
+                    ru_name: 'Морской якорь',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
                 },
                 {
                     name: 'deltik',
@@ -931,14 +1094,31 @@ function showPereshiv(slot) {
             img.addEventListener('mouseenter', function (event) {
                 var yellowData = JSON.parse(this.getAttribute('data-yellow'));
                 var ru_name = this.getAttribute('data-runame');
-
-                var tooltipText = `${ru_name.replaceAll('"','')}<br><br>`;
+                
+                // Очищаем tooltip
+                tooltip.innerHTML = '';
+                
+                // Добавляем основное название (не желтое)
+                var mainText = document.createElement('div');
+                mainText.textContent = ru_name.replaceAll('"', '');
+                mainText.style.marginBottom = '10px';
+                tooltip.appendChild(mainText);
+                
+                // Добавляем пустой div для отступа (вместо <br><br>)
+                var spacer = document.createElement('div');
+                spacer.style.marginBottom = '10px';
+                tooltip.appendChild(spacer);
+                
+                // Добавляем желтые элементы
                 for (var key in yellowData) {
                     if (RuTypes[key]) {
-                        tooltipText += `${RuTypes[key]}: ${yellowData[key]}<br>`;
+                        var yellowElement = document.createElement('div');
+                        yellowElement.textContent = `${RuTypes[key]}: ${yellowData[key]}`;
+                        yellowElement.style.color = 'yellow';
+                        tooltip.appendChild(yellowElement);
                     }
                 }
-                tooltip.innerHTML = tooltipText;
+                
                 tooltip.style.display = 'block';
             });
 
