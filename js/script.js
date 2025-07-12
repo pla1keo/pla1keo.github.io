@@ -65,14 +65,6 @@ const items = [
         ru_name: 'Энергетический чемодан'
     },
     {
-        imageSrc: `${basePath}imgs/case/chemcriminal.png`,
-        stats: { deff: 2, damage: 6, rof: 10, recoil: 10 },
-        buff: { hpmax: 15, armourmax: 15 },
-        upg: '',
-        yellow: {},
-        ru_name: 'Чемодан криминала'
-    },
-    {
         imageSrc: `${basePath}imgs/armour/bronik.png`,
         stats: { deff: 2, krit: 1, armourmax: 0 },
         upg: 'armour',
@@ -85,13 +77,6 @@ const items = [
         upg: 'armour',
         yellow: {},
         ru_name: 'Генеральский бронежилет'
-    },
-    {
-        imageSrc: `${basePath}imgs/armour/armourgraffiti.png`,
-        stats: { armourmax: 50 },
-        upg: 'armour',
-        yellow: {},
-        ru_name: 'Бронежилет с граффити'
     },
     {
         imageSrc: `${basePath}imgs/hand/duff.png`,
@@ -304,6 +289,63 @@ const items = [
         ru_name: 'Летучий голландец'
     },
 ];
+
+const nashivki = [
+    {
+        imageSrc: `${basePath}imgs/nashivki/deff.png`,
+        stats: { deff: 6 },
+        ru_name: 'Нашивка на защиту',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/damage.png`,
+        stats: { damage: 3 },
+        ru_name: 'Нашивка на урон',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/hpmin.png`,
+        stats: { hpmin: 3 },
+        ru_name: 'Нашивка на регенерацию',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/krit.png`,
+        stats: { krit: 3 },
+        ru_name: 'Нашивка на удачу',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/hpmax.png`,
+        stats: { hpmax: 8 },
+        ru_name: 'Нашивка на макс. хп',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/otrazh.png`,
+        stats: { otrazh: 3 },
+        ru_name: 'Нашивка на отражение урона',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/darkness.png`,
+        stats: { deff: 4, damage: 2 },
+        ru_name: 'Легендарная нашивка тьмы',
+        slot: 'head', slot_name: '1-ый слот'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/monster.png`,
+        stats: { deff: 4, damage: 2 },
+        ru_name: 'Легендарная нашивка Монстра',
+        slot: 'face', slot_name: '2-ой слот'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/energy.png`,
+        stats: { deff: 8, damage: 4, oglysh: 3 },
+        ru_name: 'Легендарная нашивка Энергии',
+        slot: 'hand', slot_name: '3-ий слот'
+    },
+]
 
 const skins = [
     {
@@ -558,6 +600,7 @@ function updateStats() {
             const stats = JSON.parse(img.dataset.stats);
             const type = img.dataset.upg;
             const yellow_stats = JSON.parse(img.dataset.yellow);
+            const yellow_name = img.dataset.yellow_name
             const ru_name = img.dataset.ru_name;
             if (img.dataset.nashivka == undefined) {
                 nashivka = {}
@@ -634,7 +677,7 @@ function updateStats() {
             rof += stats.rof || 0;
             recoil += stats.recoil || 0;
 
-            if (ru_name == 'Чемодан криминала') {
+            if (yellow_name == 'Чемодан криминала') {
                 hpmax = Math.round(hpmax * 1.15);
                 armourmax = Math.round(armourmax * 1.15);
             }
@@ -961,7 +1004,7 @@ function showPereshiv(slot) {
                     ru_name: 'Часы \'Casio G-SHOCK\'',
                     yellow: { damage: 1, hpmax: 5 }
                 },
-                
+
             ]
             break;
         case 'breast':
@@ -977,7 +1020,7 @@ function showPereshiv(slot) {
             items = [
                 {
                     name: 'arkanaio',
-                    ru_name: 'Аркана ИО ',
+                    ru_name: 'Аркана ИО',
                     yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
                 }
             ]
@@ -1057,8 +1100,68 @@ function showPereshiv(slot) {
             ]
             break;
         case 'armour':
-            items = []
+            items = [
+                {
+                    name: 'tactarmour',
+                    ru_name: 'Тактический бронежилет',
+                    yellow: { krit: 2, armourmax: 10 }
+                },
+                {
+                    name: 'armourgraffiti',
+                    ru_name: 'Бронежилет с граффити',
+                    yellow: { armourmax: 50 }
+                },
+                {
+                    name: 'armour1',
+                    ru_name: 'Бронежилет #1',
+                    yellow: { krit: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour2',
+                    ru_name: 'Бронежилет #2',
+                    yellow: { deff: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour3',
+                    ru_name: 'Бронежилет #3',
+                    yellow: { damage: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour4',
+                    ru_name: 'Бронежилет #4',
+                    yellow: { krit: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour5',
+                    ru_name: 'Бронежилет #5',
+                    yellow: { deff: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour6',
+                    ru_name: 'Бронежилет #6',
+                    yellow: { deff: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour7',
+                    ru_name: 'Бронежилет #7',
+                    yellow: { damage: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour8',
+                    ru_name: 'Бронежилет #8',
+                    yellow: { krit: 1, hpmax: 5 }
+                },
+            ]
             break;
+        case 'case':
+            items = [
+                {
+                    name: 'chemcriminal',
+                    ru_name: 'Чемодан криминала',
+                    yellow: { deff: 2, damage: 6, rof: 10, recoil: 10 },
+                    buff: { hpmax: 15, armourmax: 15 }
+                },
+            ]
         default:
             break;
     }
@@ -1072,11 +1175,16 @@ function showPereshiv(slot) {
             var img = document.createElement('img');
             img.src = `${basePath}imgs/${slot}/${item.name}.png`;
             img.setAttribute('data-yellow', JSON.stringify(item.yellow));
+            if (item.buff) {
+                img.setAttribute('data-buff', JSON.stringify(item.buff));
+            }
             img.setAttribute('data-runame', JSON.stringify(item.ru_name));
             img.style.position = 'relative';
 
             img.addEventListener('click', function () {
                 current_item.dataset.yellow = this.getAttribute('data-yellow');
+                current_item.dataset.buff = this.getAttribute('data-buff');
+                current_item.dataset.yellow_name = this.getAttribute('data-runame').replaceAll('"', '');;
                 var img_temp = document.createElement('img');
                 img_temp.src = current_item.src;
                 img_temp.className = "default-accs"
@@ -1093,23 +1201,32 @@ function showPereshiv(slot) {
 
             img.addEventListener('mouseenter', function (event) {
                 var yellowData = JSON.parse(this.getAttribute('data-yellow'));
+                var buffData = JSON.parse(this.getAttribute('data-buff'));
                 var ru_name = this.getAttribute('data-runame');
-                
-                // Очищаем tooltip
+
                 tooltip.innerHTML = '';
-                
-                // Добавляем основное название (не желтое)
+
                 var mainText = document.createElement('div');
                 mainText.textContent = ru_name.replaceAll('"', '');
                 mainText.style.marginBottom = '10px';
                 tooltip.appendChild(mainText);
-                
-                // Добавляем пустой div для отступа (вместо <br><br>)
+
                 var spacer = document.createElement('div');
                 spacer.style.marginBottom = '10px';
                 tooltip.appendChild(spacer);
-                
-                // Добавляем желтые элементы
+
+                if (buffData) {
+                    for (var key in buffData) {
+                        if (RuTypes[key]) {
+                            var yellowElement = document.createElement('div');
+                            yellowElement.textContent = `Предмет даёт +${buffData[key]}% к ${RuTypes[key]}`;
+                            yellowElement.style.color = 'yellow';
+                            tooltip.appendChild(yellowElement);
+                        }
+                    }
+                    tooltip.appendChild(document.createElement('br'))
+                }
+
                 for (var key in yellowData) {
                     if (RuTypes[key]) {
                         var yellowElement = document.createElement('div');
@@ -1118,7 +1235,7 @@ function showPereshiv(slot) {
                         tooltip.appendChild(yellowElement);
                     }
                 }
-                
+
                 tooltip.style.display = 'block';
             });
 
@@ -1295,41 +1412,10 @@ $(document).ready(function () {
         $('#character-image').attr('src', skin.imageSrc);
         selectedSkin = skin;
         updateStats();
-        // alert(`Вы выбрали скин: ${skin.ru_name}`);
         $('#modalSkinsOverlay').fadeOut(200, function () {
             $(this).css('display', 'none');
         });
-        // Тут можно добавить обработку выбранного скина
     });
-
-    // function updateCharacterImage() {
-    //     let randomElement;
-
-    //     do {
-    //         randomElement = getRandomElement(myArray);
-    //     } while (randomElement === previousElement);
-
-    //     previousElement = randomElement;
-    //     $('#character-image').attr('src', `${basePath}imgs/characters/${randomElement}.png`);
-    // }
-
-    // updateCharacterImage();
-
-    // var character = $('#character')
-    // var tooltip = character.find('.tooltip');
-
-    // character.on('click', function () {
-    //     updateCharacterImage();
-    // });
-    // if (!isMobileDevice()) {
-    //     character.on('mouseover', function () {
-    //         tooltip.show();
-    //     });
-
-    //     character.on('mouseout', function () {
-    //         tooltip.hide();
-    //     });
-    // }
 
     $('.btn.plus').on('click', function (e) {
         if (isMobileDevice()) {
@@ -1357,51 +1443,6 @@ $(document).ready(function () {
             updateStats();
         }
     });
-
-
-    $('.btn.nashivka').on('click', function (e) {
-        if (isMobileDevice()) {
-            e.stopPropagation();
-        }
-
-        var $gridItem = $(this).closest('.grid-item');
-        var $buttonContainer = $('<div class="button-container"></div>');
-        var buttons = [
-            { text: 'ДЕФФ', type: 'deff', value: 6 },
-            { text: 'УРОН', type: 'damage', value: 3 },
-            { text: 'КРИТ', type: 'krit', value: 3 },
-            { text: 'ОТРАЖЕНИЕ', type: 'otrazh', value: 3 }
-        ];
-        buttons.forEach(function (button) {
-            var $button = $('<button class="btn">' + button.text + '</button>');
-            $button.on('click', function (e) {
-                if (isMobileDevice()) {
-                    e.stopPropagation();
-                }
-                var item = $gridItem.find('img.main')[0]
-                var tooltip = $gridItem.find('.tooltip')[0]
-                $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
-                if (item != undefined) {
-                    item.dataset.nashivka = `{"${button.type}": ${button.value}}`
-                    if (item.dataset.nashivka != undefined) {
-                        var nashivkaType = button.type;
-                        var ruName = RuTypes[nashivkaType];
-
-                        if (ruName) {
-                            tooltip.innerHTML = `${tooltip.innerHTML}<br>Нашивка: ${ruName}`;
-                        }
-                    }
-                    updateStats()
-                }
-                $buttonContainer.remove();
-            });
-            $buttonContainer.append($button);
-        });
-
-
-        $gridItem.append($buttonContainer);
-    });
-
 
     $('.btn.nashivkabronik').on('click', function (e) {
         if (isMobileDevice()) {
@@ -1458,6 +1499,97 @@ $(document).ready(function () {
         var modalAccs = document.querySelector('.modal-accs');
         while (modalAccs.firstChild) {
             modalAccs.removeChild(modalAccs.firstChild);
+        }
+    });
+
+    const closeNashivkaModalButton = document.getElementById('closeNashivkaModal');
+    const closeNashivkaModalXButton = document.getElementById('closeXModalNashivka');
+
+    const modalNashivkaOverlay = document.getElementById('modalNashivkaOverlay');
+
+    closeNashivkaModalButton.addEventListener('click', () => {
+        modalNashivkaOverlay.style.display = 'none';
+
+        var modalNashivki = document.querySelector('.modal-nashivki');
+        while (modalNashivki.firstChild) {
+            modalNashivki.removeChild(modalNashivki.firstChild);
+        }
+    });
+
+    closeNashivkaModalXButton.addEventListener('click', () => {
+        modalNashivkaOverlay.style.display = 'none';
+
+        var modalNashivki = document.querySelector('.modal-nashivki');
+        while (modalNashivki.firstChild) {
+            modalNashivki.removeChild(modalNashivki.firstChild);
+        }
+    });
+
+    $('.btn.nashivka').on('click', function (e) {
+        if (isMobileDevice()) {
+            e.stopPropagation();
+        }
+        const container = $('.modal-nashivki');
+        container.empty();
+        var gridItem = $(this).closest('.grid-item');
+        var item_slot = gridItem.attr('id');
+        var item_ = gridItem.find('img.main')[0];
+
+        nashivki.forEach((nashivka, i) => {
+            if (nashivka.slot == item_slot || nashivka.slot == 'all') {
+                let statsHtml = '';
+                for (const stat in nashivka.stats) {
+                    if (RuTypes[stat]) {
+                        statsHtml += `<span>${RuTypes[stat]}: ${nashivka.stats[stat]}</span>`;
+                    }
+                }
+
+                const nashivkaHtml = `
+                    <div class="modal-nashivka" data-index="${i}" data-slot="${item_slot}" data-image="${nashivka.imageSrc}">
+                        <img src="${nashivka.imageSrc}" alt="${nashivka.ru_name}" />
+                        <div class="nashivka-name">${nashivka.ru_name}</div>
+                        <div class="nashivka-name" style="font-size: 12px; color: pink;">${nashivka.slot_name}</div>
+                        <div class="nashivka-stats">${statsHtml}</div>
+                    </div>
+                `;
+
+                container.append(nashivkaHtml);
+            }
+        });
+
+        container.on('click', '.modal-nashivka', function (e) {
+            if (isMobileDevice()) {
+                e.stopPropagation();
+            }
+
+            container.off('click', '.modal-nashivka');
+
+            const index = $(this).data('index');
+            const slot = $(this).data('slot');
+            const $gridItem = $(`.grid-item#${slot}`);
+            var item = $gridItem.find('img.main')[0];
+            var tooltip = $gridItem.find('.tooltip')[0];
+            var nashivka = nashivki[index];
+
+            console.log('click: ', nashivka);
+            $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'));
+            console.log($gridItem)
+            if (item != undefined) {
+                item.dataset.nashivka = JSON.stringify(nashivka.stats);
+                if (item.dataset.nashivka != undefined) {
+                    var ruName = nashivka.ru_name;
+                    if (ruName) {
+                        tooltip.innerHTML = `${tooltip.innerHTML}<br>${ruName}`;
+                    }
+                    $gridItem.find('img.nashivka').remove();
+                    item.insertAdjacentHTML('afterend', `<img src="${nashivka.imageSrc}" class="nashivka">`);
+                }
+                updateStats();
+            }
+            $('#modalNashivkaOverlay').css('display', 'none').hide().fadeOut(200);
+        });
+        if (item_ != undefined) {
+            $('#modalNashivkaOverlay').css('display', 'flex').hide().fadeIn(200);
         }
     });
 });

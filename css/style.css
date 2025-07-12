@@ -102,6 +102,15 @@ body {
     pointer-events: none;
 }
 
+.grid-item img.nashivka {
+    max-width: 50%;
+    max-height: 50%;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    pointer-events: none;
+}
+
 .grid-text {
     position: absolute;
     bottom: 5px;
@@ -134,24 +143,24 @@ body {
     background-color: #999999;
 }
 
-#closeModal {
+#closeModal, #closeSkinModal, #closeNoneSkinModal, #closeNashivkaModal {
     width: 150px;
     height: 40px;
     background-color: #555555;
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-#closeModal:hover {
+#closeModal:hover, #closeNashivkaModal:hover, #closeSkinModal:hover, #closeNoneSkinModal:hover {
     background-color: #777777;
 }
 
-#closeModal:active {
+#closeModal:active, #closeNashivkaModal:active, #closeSkinModal:active, #closeNoneSkinModal:active {
     background-color: #999999;
 }
 
@@ -261,6 +270,10 @@ body {
     text-align: center;
     max-width: 80%;
     max-height: 80%;
+}
+
+.nashivki-modal {
+    max-width: 60%;
 }
 
 .modal div img {
@@ -382,7 +395,7 @@ body {
     }
 }
 
-.modal-skins {
+.modal-skins, .modal-nashivki {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -392,7 +405,7 @@ body {
   padding-bottom: 15px;
 }
 
-.modal-skin {
+.modal-skin, .modal-nashivka {
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -405,19 +418,19 @@ body {
   background-color: #1a1a1a;
 }
 
-.modal-skin:hover {
+.modal-skin:hover, .modal-nashivka:hover {
   border-color: #757575;
   background: #3f3f3f;
 }
 
-.modal-skin img {
+.modal-skin img, .modal-nashivka img {
   width: 100px;
   height: 100px;
   object-fit: contain;
   margin-bottom: 6px;
 }
 
-.modal-skin .skin-name {
+.modal-skin .skin-name, .modal-nashivka .nashivka-name {
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 6px;
@@ -430,28 +443,13 @@ body {
   text-align: center;
 }
 
-.modal-skin .skin-stats span {
+.modal-nashivka .nashivka-stats {
+  font-size: 12px;
+  color: lawngreen;
+  text-align: center;
+}
+
+.modal-skin .skin-stats span, .modal-nashivka .nashivka-stats span {
   display: block;
   margin-bottom: 2px;
-}
-
-#closeSkinModal, #closeNoneSkinModal {
-    width: 150px;
-    height: 40px;
-    background-color: #555555;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#closeSkinModal:hover, #closeNoneSkinModal:hover {
-    background-color: #777777;
-}
-
-#closeSkinModal:active, #closeNoneSkinModal:active {
-    background-color: #999999;
 }
