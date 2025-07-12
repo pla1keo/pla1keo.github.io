@@ -811,6 +811,7 @@ document.querySelectorAll('.grid-item').forEach(item => {
                     if (existingImg) {
                         existingImg.outerHTML = imgHtml;
                         $(item).find('img.default-accs').remove();
+                        $(item).find('img.nashivka').remove();
                     } else {
                         item.appendChild(imgElement);
                     }
