@@ -644,9 +644,12 @@ function updateStats() {
             }
 
             deff += nashivka.deff || 0;
+            hpmin += nashivka.hpmin || 0;
             damage += nashivka.damage || 0;
             krit += nashivka.krit || 0;
+            hpmax += nashivka.hpmax || 0;
             otrazh += nashivka.otrazh || 0;
+            oglysh += nashivka.oglysh || 0;
             neoglysh += nashivka.neoglysh || 0;
 
             deff += yellow_stats.deff || 0;
