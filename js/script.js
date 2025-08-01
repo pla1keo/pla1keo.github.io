@@ -1165,6 +1165,11 @@ function showPereshiv(slot) {
                     yellow: { deff: 2, damage: 6, rof: 10, recoil: 10 },
                     buff: { hpmax: 15, armourmax: 15 }
                 },
+                {
+                    name: 'labubu',
+                    ru_name: 'Чемодан Лабубу',
+                    yellow: { deff: 2, damage: 2 }
+                },
             ]
         default:
             break;
