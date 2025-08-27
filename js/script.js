@@ -79,11 +79,46 @@ const items = [
         ru_name: 'Генеральский бронежилет'
     },
     {
+        imageSrc: `${basePath}imgs/hand/spacehand.png`,
+        stats: { damage: 4, armourmax: 10, otrazh: 1 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Космическая рука'
+    },
+    {
         imageSrc: `${basePath}imgs/hand/duff.png`,
         stats: { damage: 4 },
         upg: 'damage',
         yellow: {},
         ru_name: 'Молот «Duff»'
+    },
+    {
+        imageSrc: `${basePath}imgs/hand/prototype.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Прототип'
+    },
+    {
+        imageSrc: `${basePath}imgs/hand/vay.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Перчатка Вай'
+    },
+    {
+        imageSrc: `${basePath}imgs/hand/knuckles.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Перчатка Наклза'
+    },
+    {
+        imageSrc: `${basePath}imgs/hand/magaxe.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Магический топор'
     },
     {
         imageSrc: `${basePath}imgs/hand/fraps.png`,
@@ -105,6 +140,13 @@ const items = [
         upg: 'krit',
         yellow: {},
         ru_name: 'Эндер куб'
+    },
+    {
+        imageSrc: `${basePath}imgs/head/starnimb.png`,
+        stats: { damage: 1, krit: 10, oglysh: 1 },
+        upg: 'krit',
+        yellow: {},
+        ru_name: 'Звездный нимб'
     },
     {
         imageSrc: `${basePath}imgs/spine/tor.png`,
@@ -191,6 +233,13 @@ const items = [
         ru_name: 'Маркер «BAD»'
     },
     {
+        imageSrc: `${basePath}imgs/head/bk.png`,
+        stats: { krit: 10 },
+        upg: 'krit',
+        yellow: {},
+        ru_name: 'Бойцовский клуб'
+    },
+    {
         imageSrc: `${basePath}imgs/head/ironman.png`,
         stats: { krit: 2 },
         upg: 'krit',
@@ -233,18 +282,18 @@ const items = [
         ru_name: 'Сфера над головой'
     },
     {
+        imageSrc: `${basePath}imgs/head/spacejetpack.png`,
+        stats: { deff: 2, damage: 2, krit: 2 },
+        upg: 'hpmin',
+        yellow: {},
+        ru_name: 'Космический джетпак'
+    },
+    {
         imageSrc: `${basePath}imgs/head/jetpack.png`,
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'hpmin',
         yellow: {},
         ru_name: 'Джетпак'
-    },
-    {
-        imageSrc: `${basePath}imgs/hand/magaxe.png`,
-        stats: { damage: 4 },
-        upg: 'damage',
-        yellow: {},
-        ru_name: 'Магический топор'
     },
     {
         imageSrc: `${basePath}imgs/breast/swag.png`,
@@ -348,6 +397,41 @@ const nashivki = [
 ]
 
 const skins = [
+    {
+        imageSrc: `${basePath}imgs/skins/spacefarmer.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Космический Фермер'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/sydney.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Суидни Суини'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/antman.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Человек-муравей'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/mary.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Mary'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/bloodyangel.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Кровавый Ангел'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/spacemarine.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Космодесантник'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/altushka.png`,
+        yellow: { armourmax: 100 },
+        ru_name: 'Альтушка'
+    },
     {
         imageSrc: `${basePath}imgs/skins/ct.png`,
         yellow: { deff: 2, damage: 2, otrazh: 3 },
@@ -954,14 +1038,14 @@ function showPereshiv(slot) {
         case 'hand':
             items = [
                 {
-                    name: 'bumblebee',
-                    ru_name: 'Оружие Бамбли Би',
-                    yellow: { deff: 1, damage: 1 }
-                },
-                {
                     name: 'energowatch',
                     ru_name: 'Энергетические часы',
                     yellow: { deff: 2, damage: 2, hpmax: 5, armourmax: 5, otrazh: 6 }
+                },
+                {
+                    name: 'bumblebee',
+                    ru_name: 'Оружие Бамбли Би',
+                    yellow: { deff: 1, damage: 1 }
                 },
                 {
                     name: 'pirateflashlight',
@@ -1031,6 +1115,11 @@ function showPereshiv(slot) {
             break;
         case 'spine':
             items = [
+                {
+                    name: 'katananir',
+                    ru_name: 'Катана Нир',
+                    yellow: { deff: 3, damage: 3, hpmax: 20, armourmax: 20, otrazh: 2 }
+                },
                 {
                     name: 'bloodywings',
                     ru_name: 'Кровавые крылья',
