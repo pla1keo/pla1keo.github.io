@@ -4,11 +4,11 @@ function isMobileDevice() {
 
 if (isMobileDevice()) {
     if (!window.location.pathname.includes('/mobile')) {
-        window.location.href = '/mobile/beta.html';
+        window.location.href = '/mobile/';
     }
 } else {
     if (window.location.pathname.includes('/mobile')) {
-        window.location.href = '/beta.html';
+        window.location.href = '/';
     }
 }
 
