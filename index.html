@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div id="toast"></div>
     <div style="position: absolute;" class="fan-content">
         <img id="logo" src="./imgs/icon.png">
         <div>
@@ -21,11 +22,36 @@
     </div>
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" style="position: relative;">
-            <button id="closeXModal"
-                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
-            <h2>Выберите аксессуар на который совершить перенос:</h2>
+            <h2>Выберите аксессуар с которого будут взяты основные характеристики</h2>
             <div class="modal-accs"></div>
-            <button id="closeModal">Без переноса</button>
+            <button id="closeModal">Пропустить</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalYellowOverlay">
+        <div class="modal" style="position: relative;">
+            <h2>Выберите аксессуар с которого будут взяты жёлтые характеристики</h2>
+            <div class="modal-yellow-accs"></div>
+            <button id="closeYellowModal">Без переноса</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalMainAcsOverlay">
+        <div class="modal" style="position: relative;">
+            <button id="closeXMainAcsModal"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
+            <h2>Выберите основной аксессуар в [SLOT_NAME]</h2>
+            <p>(его характеристики не будут учтены)</p>
+            <input type="text" id="promptMainAcsInput" placeholder="Название аксессуара" />
+            <div class="modal-main-accs"></div>
+            <button id="closeMainAcsModal">Отмена</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalUpgradeOverlay">
+        <div class="modal" style="position: relative;">
+            <button id="closeXUpgradeModal"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
+            <h2>Выберите аксессуар на доп. слот [SLOT_NAME]</h2>
+            <div class="modal-upgrades"></div>
+            <button id="closeUpgradeModal">Отмена</button>
         </div>
     </div>
     <div class="modal-overlay" id="modalNashivkaOverlay">
@@ -37,6 +63,15 @@
             <button id="closeNashivkaModal">Без нашивки</button>
         </div>
     </div>
+    <div class="modal-overlay" id="modalSetsOverlay">
+        <div class="modal sets-modal" style="position: relative;">
+            <button id="closeXModalSets"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
+            <h2>Выберите сет:</h2>
+            <div class="modal-sets"></div>
+            <button id="closeSetsModal">Отмена</button>
+        </div>
+    </div>
     <div class="modal-overlay" id="modalSkinsOverlay" style="display:none;">
         <div class="modal" style="position: relative;">
             <button id="closeXModalSkin"
@@ -45,13 +80,50 @@
             <div class="modal-skins"></div>
             <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
                 <button id="closeSkinModal">Стандартный скин (+12)</button>
-                <button id="closeNoneSkinModal">Под организацию</button>
+                <button id="closeNoneSkinModal">Без скина</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="customPrompt" style="display:none;">
+        <div class="modal">
+            <h2 id="promptTitle">Введите название сета:</h2>
+            <input type="text" id="promptInput" placeholder="Мега крутой сет" />
+            <div class="modal-buttons">
+                <button id="promptOk">Ок</button>
+                <button id="promptCancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalDelete">
+        <div class="modal deleteModal">
+            <h2>Вы уверены что хотите удалить аксессуар из слота [SLOT_NAME]?</h2>
+            <button id="yesDelete">Да</button>
+            <button id="noDelete">Нет</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="customConfirm" style="display:none;">
+        <div class="modal">
+            <h2 id="confirmTitle">Вы точно хотите удалить сет?</h2>
+            <div class="modal-buttons">
+                <button id="confirmYes">Да</button>
+                <button id="confirmCancel">Отмена</button>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="left-section">
             <div class="character">
+                <div class="grid_two">
+                    <div class="grid-item" id="bootL" ru-name="Левый ботинок">
+                        <div class="tooltip tooltip-2"></div>
+                    </div>
+                    <div class="grid-item" id="bootR" ru-name="Правый ботинок">
+                        <div class="tooltip tooltip-2"></div>
+                    </div>
+                    <div class="grid-item" id="knife" ru-name="Нож">
+                        <div class="tooltip tooltip-2"></div>
+                    </div>
+                </div>
                 <div style="cursor: pointer; position: relative;" id="character">
                     <img src="./imgs/characters/mafia.png" alt="Character" style="width: 20vw" id="character-image">
                     <div class="tooltip" style="bottom: 101%;">Нажмите чтобы выбрать скин</div>
@@ -76,12 +148,11 @@
                             id="neoglysh">[+0%]</span></span><br>
                     <span class="highlight white">Отражение урона: <span class="highlight"
                             id="otrazh">[-0%]</span></span><br>
-                    <span class="highlight white">Блокировка урона: <span class="highlight"
-                            id="block">[0 раз]</span></span><br>
-                    <span class="highlight white">Скорострельность: <span class="highlight"
-                            id="rof">[+0% скорострельности]</span></span><br>
-                    <span class="highlight white">Отдача: <span class="highlight"
-                            id="recoil">[-0% отдачи]</span></span>
+                    <span class="highlight white">Блокировка урона: <span class="highlight" id="block">[0
+                            раз]</span></span><br>
+                    <span class="highlight white">Скорострельность: <span class="highlight" id="rof">[+0%
+                            скорострельности]</span></span><br>
+                    <span class="highlight white">Отдача: <span class="highlight" id="recoil">[-0% отдачи]</span></span>
                 </div>
             </div>
             <div class="grid">
@@ -160,28 +231,8 @@
             <span class="copyright">© plalkeo, 2025</span>
         </div>
 
-        <div class="trash">
-            <div class="tooltip" id="trashtooltip">Перетащите сюда предмет, чтобы его выкинуть!</div>
-        </div>
-
-        <div class="right-section">
-            <div class="mini-container" slot-name="head">
-            </div>
-            <div class="mini-container" slot-name="face">
-            </div>
-            <div class="mini-container" slot-name="hand">
-            </div>
-            <div class="mini-container" slot-name="breast">
-            </div>
-            <div class="mini-container" slot-name="shoulder">
-            </div>
-            <div class="mini-container" slot-name="spine">
-            </div>
-            <div class="mini-container" slot-name="armour">
-            </div>
-            <div class="mini-container" slot-name="case">
-            </div>
-        </div>
+        <button id="sets">Готовые сетики</button>
+        <button id="save-set">Сохранить текущий сет</button>
     </div>
 
     <script src="./js/script.js"></script>

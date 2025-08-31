@@ -1,3 +1,37 @@
+/* Для WebKit-браузеров (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+    /* ширина скроллбара */
+    height: 10px;
+    /* высота горизонтального скроллбара */
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    /* цвет дорожки */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    /* цвет ползунка */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+    /* цвет ползунка при наведении */
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    /* тонкий скроллбар */
+    scrollbar-color: #555 #1e1e1e;
+    /* ползунок и дорожка */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -10,14 +44,14 @@ body {
 }
 
 .fan-content img#logo {
-    width: 5vw; 
-    margin-left: 10px; 
+    width: 5vw;
+    margin-left: 10px;
     margin-top: 10px;
 }
 
 .fan-content img#tg {
-    width: 2.2vw; 
-    margin-left: 10px; 
+    width: 2.2vw;
+    margin-left: 10px;
     margin-top: 10px;
     cursor: pointer;
 }
@@ -54,7 +88,6 @@ body {
     flex-direction: row;
     text-align: left;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .grid {
@@ -63,9 +96,17 @@ body {
     gap: 10px;
 }
 
+.grid_two {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+}
+
+
 .grid-item {
-    width: 6vw;
-    height: 6vw;
+    width: 7vw;
+    height: 7vw;
     background-color: #333333;
     display: flex;
     flex-direction: column;
@@ -73,6 +114,7 @@ body {
     align-items: center;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
     position: relative;
 }
 
@@ -87,26 +129,46 @@ body {
     gap: 10px;
 }
 
-.grid-item img {
+.under-grid {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.grid-item img.main-accs {
     max-width: 100%;
     max-height: 100%;
+    z-index: 9;
     cursor: pointer;
 }
 
 .grid-item img.default-accs {
-    max-width: 50%;
-    max-height: 50%;
+    max-width: 40%;
+    max-height: 40%;
     position: absolute;
-    top: 0; 
+    z-index: 10;
+    top: 0;
     right: 0;
     pointer-events: none;
 }
 
-.grid-item img.nashivka {
-    max-width: 50%;
-    max-height: 50%;
+.grid-item img.yellow-accs {
+    max-width: 40%;
+    max-height: 40%;
     position: absolute;
-    top: 0; 
+    z-index: 10;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.grid-item img.nashivka {
+    max-width: 40%;
+    max-height: 40%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
     left: 0;
     pointer-events: none;
 }
@@ -119,6 +181,8 @@ body {
     font-size: 12px;
     font-weight: bold;
     white-space: nowrap;
+    user-select: none;
+    z-index: 12;
 }
 
 .btn {
@@ -135,6 +199,11 @@ body {
     transition: background-color 0.3s;
 }
 
+.btn.nashivka,
+.btn.nashivkabronik {
+    width: 2.4vw;
+}
+
 .btn:hover {
     background-color: #777777;
 }
@@ -143,7 +212,21 @@ body {
     background-color: #999999;
 }
 
-#closeModal, #closeSkinModal, #closeNoneSkinModal, #closeNashivkaModal {
+#closeModal,
+#closeYellowModal,
+#closeMainAcsModal,
+#closeUpgradeModal,
+#closeSkinModal,
+#closeNoneSkinModal,
+#closeNashivkaModal,
+#promptOk,
+#promptCancel,
+#confirmYes,
+#yesDelete,
+#noDelete,
+#confirmCancel,
+#addSetsByCode,
+#closeSetsModal {
     width: 150px;
     height: 40px;
     background-color: #555555;
@@ -154,14 +237,106 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 15px;
 }
 
-#closeModal:hover, #closeNashivkaModal:hover, #closeSkinModal:hover, #closeNoneSkinModal:hover {
+#closeModal:hover,
+#closeYellowModal:hover,
+#closeMainAcsModal:hover,
+#closeUpgradeModal:hover,
+#closeNashivkaModal:hover,
+#closeSkinModal:hover,
+#addSetsByCode:hover,
+#promptOk:hover,
+#promptCancel:hover,
+#confirmYes:hover,
+#yesDelete:hover,
+#noDelete:hover,
+#confirmCancel:hover,
+#closeNoneSkinModal:hover,
+#closeSetsModal:hover {
     background-color: #777777;
 }
 
-#closeModal:active, #closeNashivkaModal:active, #closeSkinModal:active, #closeNoneSkinModal:active {
+#closeModal:active,
+#closeYellowModal:active,
+#closeMainAcsModal:active,
+#closeUpgradeModal:active,
+#closeNashivkaModal:active,
+#closeSkinModal:active,
+#addSetsByCode:active,
+#promptOk:active,
+#promptCancel:active,
+#confirmYes:active,
+#yesDelete:active,
+#noDelete:active,
+#confirmCancel:active,
+#closeNoneSkinModal:active,
+#closeSetsModal:active {
     background-color: #999999;
+}
+
+
+#promptInput,
+#promptMainAcsInput {
+    width: calc(100% - 20px);
+    height: 40px;
+    background-color: #555555;
+    color: #ffffff;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 15px;
+    outline: none;
+}
+
+#promptMainAcsInput {
+    margin-bottom: 20px;
+}
+
+#promptInput:hover,
+#promptMainAcsInput:hover {
+    background-color: #575757;
+}
+
+#promptInput:focus,
+#promptMainAcsInput:focus {
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2);
+}
+
+
+.delete-set-btn {
+    position: absolute;
+    background-color: #333333;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 10px;
+    top: 6px;
+    right: 6px;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.repost-set-btn {
+    position: absolute;
+    background-color: #333333;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    top: 6px;
+    right: 50px;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 
@@ -177,11 +352,34 @@ body {
     background-color: #333333;
     display: flex;
     justify-content: center;
+    /* Изменено для горизонтальной прокрутки */
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 14px;
     font-weight: bold;
+    overflow-x: auto;
+    /* Добавлено для горизонтальной прокрутки */
+    overflow-y: hidden;
+    white-space: nowrap;
+    /* Предотвращает перенос строк */
     border-radius: 10px;
+    scrollbar-width: thin;
+    /* для Firefox */
+    scrollbar-color: #888 transparent;
+    /* для Firefox */
+}
+
+.mini-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.mini-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mini-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
 }
 
 .info span {
@@ -203,26 +401,101 @@ body {
     height: 6vw;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-100%, -50%);
+    right: 0;
+    transform: translate(-10%, -50%);
     background-image: url(../imgs/trash.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.modal-accs {
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
-}
-
-.modal-accs img {
-    flex: 0 0 calc(12.5% - 10px);
-
-    margin-right: 10px;
+#sets {
+    width: 150px;
+    height: 50px;
+    color: white;
+    position: absolute;
+    right: 0;
+    transform: translate(-10%, 20px);
+    background-color: #333333;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    user-select: none;
     cursor: pointer;
 }
 
+#save-set {
+    width: 150px;
+    height: 50px;
+    color: white;
+    position: absolute;
+    right: 0;
+    transform: translate(-10%, 80px);
+    background-color: #333333;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    user-select: none;
+    cursor: pointer;
+}
+
+.modal-accs,
+.modal-main-accs,
+.modal-upgrades,
+.modal-yellow-accs {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#modalMainAcsOverlay .modal {
+    max-width: 60%;
+    min-width: 60%;
+    max-height: 100%;
+    padding: 20;
+}
+
+.mainAcs_stats {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 150px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 8px;
+    transition: border-color 0.25s ease;
+    background-color: #1a1a1a;
+}
+
+.mainAcs_stats:hover {
+    border-color: #757575;
+    background: #3f3f3f;
+}
+
+.modal-main-accs,
+.modal-accs,
+.modal-upgrades,
+.modal-yellow-accs {
+    max-height: 500px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-accs img,
+.modal-upgrades img,
+.modal-main-accs img,
+.modal-yellow-accs img {
+    width: 80px;
+    flex: 0 0 calc(12.5% - 10px);
+    cursor: pointer;
+}
 
 .tooltip {
     position: absolute;
@@ -237,11 +510,16 @@ body {
     font-size: 12px;
     white-space: nowrap;
     display: none;
-    z-index: 10;
+    z-index: 13;
+    user-select: none;
 }
 
 .grid-item:hover .tooltip {
     display: block;
+}
+
+.tooltip-2 {
+    bottom: -30%;
 }
 
 .mini-container img {
@@ -272,12 +550,28 @@ body {
     max-height: 80%;
 }
 
-.nashivki-modal {
-    max-width: 60%;
+.modal h2 {
+    margin-top: 40px;
 }
 
-.modal div img {
-    width: 80px;
+.deleteModal {
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sets-modal {
+    max-width: 50%;
+}
+
+.nashivki-modal {
+    max-width: 60%;
 }
 
 .button-container {
@@ -305,151 +599,377 @@ body {
 }
 
 .copyright {
-    font-size: 13px; 
+    font-size: 13px;
     margin-top: 25px;
 }
 
-@media (min-width: 1921px) { /* 2K */
+@media (min-width: 1921px) {
+
+    /* 2K */
     .info span {
         font-size: 24px;
     }
-    .btn, .grid-item span {
+
+    .btn,
+    .grid-item span {
         font-size: 18px;
     }
+
     .tooltip {
         font-size: 18px;
     }
+
     .copyright {
-        font-size: 15px; 
+        font-size: 15px;
     }
 }
 
-@media (min-width: 2561px) { /* 4K */
+@media (min-width: 2561px) {
+
+    /* 4K */
     .info span {
         font-size: 32px;
     }
-    .btn, .grid-item span {
+
+    .btn,
+    .grid-item span {
         font-size: 30px;
     }
+
     .btn {
         border-radius: 8px;
     }
+
     .copyright {
-        font-size: 20px; 
+        font-size: 20px;
     }
 }
 
-@media (min-width: 1400px) and (max-width: 1700px) { /* ??? */
+@media (min-width: 1400px) and (max-width: 1700px) {
+
+    /* ??? */
     .info span {
         font-size: 14px;
     }
-    .btn, .grid-item span {
+
+    .btn,
+    .grid-item span {
         width: 1vw;
         height: 1vw;
         border-radius: 3px;
         font-size: 10px;
     }
+
     .copyright {
-        font-size: 10px; 
+        font-size: 10px;
     }
 }
 
-@media (min-width: 1281px) and (max-width: 1399px) { /* ??? */
+@media (min-width: 1281px) and (max-width: 1399px) {
+
+    /* ??? */
     .info span {
         font-size: 14px;
     }
-    .btn, .grid-item span {
+
+    .btn,
+    .grid-item span {
         width: 1vw;
         height: 1vw;
         border-radius: 3px;
         font-size: 10px;
     }
+
     .copyright {
-        font-size: 10px; 
+        font-size: 10px;
     }
 }
 
 
-@media (max-width: 1280px) { /* HD */
+@media (max-width: 1280px) {
+
+    /* HD */
     .info span {
-        font-size: 14px; 
+        font-size: 14px;
     }
 
     .fan-content div {
         width: 8vw;
         font-size: 10px;
     }
+
     .btn {
         width: 1vw;
         height: 1vw;
         border-radius: 3px;
     }
-    .btn, .grid-item span {
+
+    .btn,
+    .grid-item span {
         font-size: 8px;
     }
+
     .tooltip {
         font-size: 10px;
     }
+
     .copyright {
-        font-size: 10px; 
+        font-size: 10px;
     }
 }
 
-.modal-skins, .modal-nashivki {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 15px;
-  max-height: 500px;
-  overflow-y: auto;
-  padding-bottom: 15px;
+.modal-skins,
+.modal-nashivki {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-bottom: 15px;
 }
 
-.modal-skin, .modal-nashivka {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 150px;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  padding: 8px;
-  transition: border-color 0.25s ease;
-  background-color: #1a1a1a;
+.modal-sets {
+    position: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+    max-height: 550px;
+    overflow-y: auto;
+    padding-bottom: 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal-skin:hover, .modal-nashivka:hover {
-  border-color: #757575;
-  background: #3f3f3f;
+.modal-skin,
+.modal-nashivka,
+.yellow_stats {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 8px;
+    transition: border-color 0.25s ease;
+    background-color: #1a1a1a;
 }
 
-.modal-skin img, .modal-nashivka img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 6px;
+.modal-set {
+    position: inherit;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 750px;
+    gap: 10px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 8px;
+    transition: border-color 0.25s ease;
+    background-color: #1a1a1a;
 }
 
-.modal-skin .skin-name, .modal-nashivka .nashivka-name {
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 6px;
-  text-align: center;
+.modal-set> :first-child {
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
 }
 
-.modal-skin .skin-stats {
-  font-size: 12px;
-  color: yellow;
-  text-align: center;
+.modal-set .accs .acs-icons {
+    background-color: #2e2e2e;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.modal-set .accs .acs-icons img:nth-child(1) {
+    z-index: 5;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.modal-set .accs .acs-icons img:nth-child(2) {
+    z-index: 6;
+    max-width: 50%;
+    max-height: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.modal-set .accs .acs-icons img#nashivka {
+    z-index: 7;
+    max-width: 50%;
+    max-height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.modal-set .accs .acs-icons p#zatochka {
+    z-index: 8;
+    position: absolute;
+    bottom: -14px;
+    left: 14px;
+    pointer-events: none;
+}
+
+.modal-set .main-info {
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.modal-set .bottom-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.modal-set .accs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 25px;
+    width: 50%;
+}
+
+.modal-skin:hover,
+.modal-nashivka:hover,
+.yellow_stats:hover {
+    border-color: #757575;
+    background: #3f3f3f;
+}
+
+.modal-set:hover {
+    border-color: #757575;
+}
+
+.modal-skin img,
+.modal-nashivka img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 6px;
+}
+
+.modal-set img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 6px;
+}
+
+.acs-icons.head {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.acs-icons.face {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.acs-icons.hand {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.acs-icons.armour {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.acs-icons.breast {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.acs-icons.shoulder {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.acs-icons.spine {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.acs-icons.case {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.modal-skin .skin-name,
+.modal-nashivka .nashivka-name,
+.yellow_stats div:nth-child(1) {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.modal-skin .skin-stats,
+.yellow_stats div div.yellow {
+    font-size: 12px;
+    color: yellow;
+    text-align: center;
 }
 
 .modal-nashivka .nashivka-stats {
-  font-size: 12px;
-  color: lawngreen;
-  text-align: center;
+    font-size: 12px;
+    color: lawngreen;
+    text-align: center;
 }
 
-.modal-skin .skin-stats span, .modal-nashivka .nashivka-stats span {
-  display: block;
-  margin-bottom: 2px;
+.modal-skin .skin-stats span,
+.modal-nashivka .nashivka-stats span,
+.yellow_stats div div {
+    display: block;
+    margin-bottom: 2px;
 }
+
+
+#toast {
+    visibility: hidden;
+    min-width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 12px 24px;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.add-button {
+    cursor: pointer;
+    user-select: none;
+    height: 70px;
+    background-color: #b4b400;
+    border-radius: 16px;
+    border: solid #6b6b6b 1.5px;
+    width: 70px;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BETA CSS */
