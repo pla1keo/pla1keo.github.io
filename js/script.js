@@ -487,7 +487,7 @@ function getNashivkaInfo(type) {
 const skins = [
     {
         imageSrc: `${basePath}imgs/skins/spacefarmer.png`,
-        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        yellow: { deff: 2, damage: 2, otrazh: 3, armourmax: 50 },
         ru_name: 'Космический Фермер'
     },
     {
