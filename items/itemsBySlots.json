@@ -6273,20 +6273,6 @@
             "slot_id": "0"
         },
         {
-            "id": "8779",
-            "item_name": "Энергетическая маска череп",
-            "model_id": "25000",
-            "eng_name": "Energy_mask_skull",
-            "stack": "1",
-            "useable": "false",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_ACCESSORY",
-            "colored": "false",
-            "enchanted": "true",
-            "slot_id": "0"
-        },
-        {
             "id": "8800",
             "item_name": "Корона из патрон",
             "model_id": "28189",
@@ -6354,48 +6340,6 @@
             "is_custom": "CUSTOM_OBJECT",
             "colored": "false",
             "enchanted": "true",
-            "slot_id": "0"
-        },
-        {
-            "id": "9168",
-            "item_name": "Левый ботинок Таноса [Инопланетная коллекция]",
-            "model_id": "28215",
-            "eng_name": "Infinity_Boots_L",
-            "stack": "1",
-            "useable": "false",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_ACCESSORY",
-            "colored": "false",
-            "enchanted": "false",
-            "slot_id": "0"
-        },
-        {
-            "id": "9179",
-            "item_name": "Левый космический кроссовок",
-            "model_id": "28216",
-            "eng_name": "Space_Sneakers_L",
-            "stack": "1",
-            "useable": "false",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_ACCESSORY",
-            "colored": "false",
-            "enchanted": "false",
-            "slot_id": "0"
-        },
-        {
-            "id": "9180",
-            "item_name": "Левая космическая обувь",
-            "model_id": "15636",
-            "eng_name": "Space_Shoes_L",
-            "stack": "1",
-            "useable": "false",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_OBJECT",
-            "colored": "false",
-            "enchanted": "false",
             "slot_id": "0"
         }
     ],
@@ -13508,7 +13452,7 @@
             "id": "2159",
             "item_name": "Наушники «Harman/Kardon»",
             "model_id": "25055",
-            "eng_name": "Headphones_'Harman/Kardon'",
+            "eng_name": "Headphones_HarmanKardon",
             "stack": "1",
             "useable": "false",
             "tradeable": "true",
@@ -15927,20 +15871,6 @@
             "slot_id": "4"
         },
         {
-            "id": "9030",
-            "item_name": "Sci-Fi Нож",
-            "model_id": "12753",
-            "eng_name": "Sci-Fi_Knife",
-            "stack": "1",
-            "useable": "true",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_OBJECT",
-            "colored": "false",
-            "enchanted": "false",
-            "slot_id": "4"
-        },
-        {
             "id": "9032",
             "item_name": "Красные наплечники десантника",
             "model_id": "28207",
@@ -15994,20 +15924,6 @@
             "is_custom": "CUSTOM_OBJECT",
             "colored": "false",
             "enchanted": "true",
-            "slot_id": "4"
-        },
-        {
-            "id": "9064",
-            "item_name": "Золотой нож",
-            "model_id": "15649",
-            "eng_name": "Gold_Knife",
-            "stack": "1",
-            "useable": "true",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_OBJECT",
-            "colored": "false",
-            "enchanted": "false",
             "slot_id": "4"
         }
     ],
@@ -28235,34 +28151,6 @@
             "slot_id": "5"
         },
         {
-            "id": "9040",
-            "item_name": "Правый ботинок Таноса [Инопланетная коллекция]",
-            "model_id": "28215",
-            "eng_name": "Infinity_Boots_R",
-            "stack": "1",
-            "useable": "false",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_ACCESSORY",
-            "colored": "false",
-            "enchanted": "false",
-            "slot_id": "5"
-        },
-        {
-            "id": "9041",
-            "item_name": "Правый космический кроссовок",
-            "model_id": "28216",
-            "eng_name": "Space_Sneakers_R",
-            "stack": "1",
-            "useable": "false",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_ACCESSORY",
-            "colored": "false",
-            "enchanted": "false",
-            "slot_id": "5"
-        },
-        {
             "id": "9043",
             "item_name": "Красные меха-крылья",
             "model_id": "28229",
@@ -28288,20 +28176,6 @@
             "is_custom": "CUSTOM_ACCESSORY",
             "colored": "false",
             "enchanted": "true",
-            "slot_id": "5"
-        },
-        {
-            "id": "9047",
-            "item_name": "Правая космическая обувь",
-            "model_id": "15636",
-            "eng_name": "Space_Shoes_R",
-            "stack": "1",
-            "useable": "false",
-            "tradeable": "true",
-            "droppable": "true",
-            "is_custom": "CUSTOM_OBJECT",
-            "colored": "false",
-            "enchanted": "false",
             "slot_id": "5"
         },
         {

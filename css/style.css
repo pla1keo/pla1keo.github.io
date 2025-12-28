@@ -1,35 +1,26 @@
-/* Для WebKit-браузеров (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
     width: 10px;
-    /* ширина скроллбара */
     height: 10px;
-    /* высота горизонтального скроллбара */
 }
 
 ::-webkit-scrollbar-track {
     background: #1e1e1e;
-    /* цвет дорожки */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #555;
-    /* цвет ползунка */
     border-radius: 10px;
     transition: background 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #888;
-    /* цвет ползунка при наведении */
 }
 
-/* Для Firefox */
 * {
     scrollbar-width: thin;
-    /* тонкий скроллбар */
     scrollbar-color: #555 #1e1e1e;
-    /* ползунок и дорожка */
 }
 
 body {
@@ -78,8 +69,6 @@ body {
 
 .left-section {
     flex-direction: column;
-
-
     padding: 20px;
 }
 
@@ -143,13 +132,17 @@ body {
 }
 
 .grid-item img.default-accs {
-    max-width: 40%;
+    max-width: 85%;
+    max-height: 85%;
+    z-index: 9;
+    cursor: pointer;
+    /* max-width: 40%;
     max-height: 40%;
     position: absolute;
     z-index: 10;
     top: 0;
     right: 0;
-    pointer-events: none;
+    pointer-events: none; */
 }
 
 .grid-item img.yellow-accs {
@@ -157,20 +150,48 @@ body {
     max-height: 40%;
     position: absolute;
     z-index: 10;
-    top: 50%;
+    /* top: 50%; */
+    top: 0;
     right: 0;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     pointer-events: none;
 }
 
 .grid-item img.nashivka {
+    top: 0;
+    left: 0;
     max-width: 40%;
     max-height: 40%;
     position: absolute;
     z-index: 10;
+    pointer-events: none;
+}
+
+.template {
+    max-width: 35%;
+    max-height: 35%;
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+
+    border: black 1px solid;
+}
+
+.t-n {
     top: 0;
     left: 0;
-    pointer-events: none;
+}
+
+.t-m {
+    top: 0;
+    right: 0;
+}
+
+.t-y {
+    z-index: 10;
+    top: 55%;
+    right: 0;
+    transform: translateY(-50%);
 }
 
 .grid-text {
@@ -352,21 +373,16 @@ body {
     background-color: #333333;
     display: flex;
     justify-content: center;
-    /* Изменено для горизонтальной прокрутки */
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 14px;
     font-weight: bold;
     overflow-x: auto;
-    /* Добавлено для горизонтальной прокрутки */
     overflow-y: hidden;
     white-space: nowrap;
-    /* Предотвращает перенос строк */
     border-radius: 10px;
     scrollbar-width: thin;
-    /* для Firefox */
     scrollbar-color: #888 transparent;
-    /* для Firefox */
 }
 
 .mini-container::-webkit-scrollbar {
@@ -604,8 +620,6 @@ body {
 }
 
 @media (min-width: 1921px) {
-
-    /* 2K */
     .info span {
         font-size: 24px;
     }
@@ -625,8 +639,6 @@ body {
 }
 
 @media (min-width: 2561px) {
-
-    /* 4K */
     .info span {
         font-size: 32px;
     }
@@ -646,8 +658,6 @@ body {
 }
 
 @media (min-width: 1400px) and (max-width: 1700px) {
-
-    /* ??? */
     .info span {
         font-size: 14px;
     }
@@ -666,8 +676,6 @@ body {
 }
 
 @media (min-width: 1281px) and (max-width: 1399px) {
-
-    /* ??? */
     .info span {
         font-size: 14px;
     }
@@ -687,8 +695,6 @@ body {
 
 
 @media (max-width: 1280px) {
-
-    /* HD */
     .info span {
         font-size: 14px;
     }
@@ -971,5 +977,3 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-/* BETA CSS */

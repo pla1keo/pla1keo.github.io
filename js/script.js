@@ -17,7 +17,6 @@ const setParam = params.get('set');
 
 if (setParam) {
     try {
-        // Декодируем из URI-компонента, затем из base64, затем парсим JSON
         const decoded = b64ToUtf8(decodeURIComponent(setParam));
         const setObj = JSON.parse(decoded);
 
@@ -620,6 +619,41 @@ const skins = [
         yellow: { deff: 2, damage: 2, otrazh: 3 },
         ru_name: 'Скуф'
     },
+    {
+        imageSrc: `${basePath}imgs/skins/tron.png`,
+        yellow: { deff: 2, damage: 2, hpmax: 25, armourmax: 25 },
+        ru_name: 'Трон'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/aragorn.png`,
+        yellow: { krit: 2 },
+        ru_name: 'Арагорн'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/guts.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Гатс'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/werewolf.png`,
+        yellow: { deff: 2, damage: 2, krit: 2, otrazh: 3, armourmax: 50 },
+        ru_name: 'Оборотень-человек'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/montgomery.png`,
+        yellow: { deff: 2, damage: 2, krit: 2, otrazh: 3, armourmax: 50 },
+        ru_name: 'Монтгомери'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/sabrina.png`,
+        yellow: { deff: 2, damage: 2, krit: 2, otrazh: 3, armourmax: 50 },
+        ru_name: 'Сабрина'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/glent.png`,
+        yellow: { hpmax: 25, armourmax: 25 },
+        ru_name: 'Глент'
+    },
 ];
 
 function getSkinInfoByRuName(ru_name) {
@@ -783,7 +817,7 @@ var sets = [
     },
     {
         name: 'Сет разработчика',
-        skin: 'Рилай',
+        skin: 'Оборотень-человек',
         head: {
             stats: 'Маркер dead inside',
             yellow: 'Нимб кольца всевластия',
@@ -792,15 +826,15 @@ var sets = [
         },
         face: {
             stats: 'Анимированные очки Netrunner',
-            yellow: 'Маска череп',
-            zatochka: 13,
-            nashivka: 'deff'
-        },
-        hand: {
-            stats: 'Табличка «Фрапс пишется»',
-            yellow: 'Часы «Rolex Submariner»',
+            yellow: 'Энерго маска Госта',
             zatochka: 13,
             nashivka: 'damage'
+        },
+        hand: {
+            stats: 'Магический топор',
+            yellow: 'Оружие Бамбли Би',
+            zatochka: 13,
+            nashivka: 'deff'
         },
         breast: {
             stats: 'Энергетический махинатор',
@@ -821,9 +855,9 @@ var sets = [
             nashivka: 'deff'
         },
         armour: {
-            stats: 'Бронежилет «Игра в кальмара»',
+            stats: 'Генеральский бронежилет',
             yellow: null,
-            zatochka: 8,
+            zatochka: 7,
             nashivka: 'armour'
         },
         case: {
@@ -957,6 +991,11 @@ function getItemsBySlot(slot) {
                     ru_name: 'Маска «Wrench»',
                     yellow: { deff: 1, hpmax: 5 }
                 },
+                {
+                    name: 'glentmask',
+                    ru_name: 'Маска Глента из Роблокса',
+                    yellow: { hpmax: 15, armourmax: 15 }
+                },
             ]
             break;
         case 'hand':
@@ -1025,7 +1064,12 @@ function getItemsBySlot(slot) {
                     name: 'ilum',
                     ru_name: 'Цепь Иллюмината',
                     yellow: { deff: 1, damage: 1 }
-                }
+                },
+                {
+                    name: 'glentchain',
+                    ru_name: 'Цепь Глента',
+                    yellow: { hpmax: 15, armourmax: 15 }
+                },
             ]
             break;
         case 'shoulder':
@@ -1034,7 +1078,27 @@ function getItemsBySlot(slot) {
                     name: 'arkanaio',
                     ru_name: 'Аркана ИО',
                     yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
-                }
+                },
+                {
+                    name: 'tron',
+                    ru_name: 'Кольцо Tron',
+                    yellow: { deff: 1, damage: 1, krit: 2, hpmax: 15, armourmax: 15 }
+                },
+                {
+                    name: 'silverbutton',
+                    ru_name: 'Серебряная кнопка',
+                    yellow: { hpmax: 5, armourmax: 5 }
+                },
+                {
+                    name: 'goldenbutton',
+                    ru_name: 'Золотая кнопка',
+                    yellow: { hpmax: 10, armourmax: 10 }
+                },
+                {
+                    name: 'diamondbutton',
+                    ru_name: 'Бриллиантовая кнопка',
+                    yellow: { hpmax: 25, armourmax: 25 }
+                },
             ]
             break;
         case 'spine':
@@ -1132,6 +1196,11 @@ function getItemsBySlot(slot) {
                     name: 'armourgraffiti',
                     ru_name: 'Бронежилет с граффити',
                     yellow: { armourmax: 50 }
+                },
+                {
+                    name: 'firearmour',
+                    ru_name: 'Огненный бронежилет',
+                    yellow: { deff: 2, damage: 2 }
                 },
                 {
                     name: 'armour1',
@@ -1302,21 +1371,6 @@ class ItemPlacer {
             img.addEventListener('mousemove', (e) => this.moveTooltip(e));
             img.addEventListener('mouseleave', () => this.hideTooltip());
         }
-        // } else {
-        //     let pressTimer;
-
-        //     img.addEventListener('contextmenu', (e) => {
-        //         e.preventDefault();
-        //     });
-
-        //     img.addEventListener('touchstart', (e) => {
-        //         e.preventDefault();
-        //         pressTimer = setTimeout(() => {
-        //             this.showTooltip(e.touches[0], img);
-        //         }, 500); // 500ms — длительность удержания
-        //     });
-        // }
-
 
         return img;
     }
@@ -1328,14 +1382,12 @@ class ItemPlacer {
         const ru_name = img.getAttribute('data-ru_name');
         const upg = img.getAttribute('data-upg');
 
-        // Очистим тултип перед заполнением
         this.tooltip.innerHTML = '';
 
         if (isMobileDevice()) {
             this.tooltip.style.width = '100%'
         }
 
-        // Название предмета
         const mainText = document.createElement('div');
         mainText.textContent = ru_name.replaceAll('"', '');
         mainText.style.marginBottom = '10px';
@@ -1343,9 +1395,6 @@ class ItemPlacer {
         mainText.style.whiteSpace = 'nowrap';
         this.tooltip.appendChild(mainText);
 
-        // Уровень (апгрейд)
-
-        // Разделитель
         const spacer = document.createElement('div');
         spacer.style.marginBottom = '10px';
         this.tooltip.appendChild(spacer);
@@ -1362,7 +1411,7 @@ class ItemPlacer {
         if (stats && typeof stats === 'object') {
             for (let key in stats) {
                 if (RuTypes[key]) {
-                    const buffElement = document.createElement('div'); // — Защита: -1% урона
+                    const buffElement = document.createElement('div');
                     switch (key) {
                         case 'deff':
                             if (stats[key] > 0) {
@@ -1449,11 +1498,10 @@ class ItemPlacer {
     moveTooltip(event) {
         const tooltip = this.tooltip;
         const padding = 10;
-        const boundaryBuffer = 10; // ← буфер до касания границы
+        const boundaryBuffer = 10;
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
 
-        // Временно показать тултип (если он вдруг ещё скрыт)
         tooltip.style.left = '0px';
         tooltip.style.top = '0px';
         tooltip.style.display = 'block';
@@ -1462,12 +1510,10 @@ class ItemPlacer {
         let left = event.pageX + padding;
         let top = event.pageY + padding;
 
-        // Перенос влево ЗА 10px до соприкосновения с правой границей
         if (left + tooltipRect.width + boundaryBuffer >= window.pageXOffset + windowWidth) {
             left = event.pageX - tooltipRect.width - padding;
         }
 
-        // Перенос вверх ЗА 10px до соприкосновения с нижней границей
         if (top + tooltipRect.height + boundaryBuffer >= window.pageYOffset + windowHeight) {
             top = event.pageY - tooltipRect.height - padding;
         }
@@ -1519,6 +1565,7 @@ function getMultiplier(type) {
 }
 
 function updateStats() {
+    console.log('update?');
     const gridItems = document.querySelectorAll('.grid-item');
     var deff = 0;
     var hpmin = 0;
@@ -1560,14 +1607,14 @@ function updateStats() {
     }
 
     gridItems.forEach(item => {
-        const img = item.querySelector('img.main-accs');
+        const img = item.querySelector('img.default-accs');
         if (img) {
-            // console.log(img)
-            const stats = JSON.parse(img.dataset.stats); // теперь можно парсить
+            const stats = JSON.parse(img.dataset.stats);
             const type = img.dataset.upg;
             const yellow_stats = JSON.parse(img.dataset.yellow);
             const yellow_name = img.dataset.yellow_name
             const ru_name = img.dataset.ru_name;
+            let nashivka = {};
             if (img.dataset.nashivka == undefined) {
                 nashivka = {}
             } else {
@@ -1649,10 +1696,6 @@ function updateStats() {
             rof += stats.rof || 0;
             recoil += stats.recoil || 0;
 
-            // if (armourmax >= 250) {
-            //     armourmax = 250;
-            // }
-            // console.log(yellow_name)
             if (yellow_name == 'Чемодан криминала') {
                 hpmax = Math.round(hpmax * 1.15);
                 armourmax = Math.round(armourmax * 1.15);
@@ -1756,34 +1799,22 @@ function addAccs(slot_name, imgHtml) {
 var temp_info = {};
 
 const input = document.getElementById('promptMainAcsInput');
-// const input_def = document.getElementById('promptDefAcsInput');
-// const input_yellow = document.getElementById('promptYellowAcsInput');
 let itemsData = null;
 
-(async () => {
-    try {
-        const res = await fetch(`${basePath}items/itemsBySlots.json`);
-        itemsData = await res.json();
-        // console.log('Данные загружены:', itemsData);
-    } catch (err) {
-        console.error('Ошибка загрузки items:', err);
-    }
-})();
+// (async () => {
+//     try {
+//         const res = await fetch(`${basePath}items/itemsBySlots.json`);
+//         itemsData = await res.json();
+//         addImages();
+//     } catch (err) {
+//         console.error('Ошибка загрузки items:', err);
+//     }
+// })();
 
 input.addEventListener('input', () => {
     const value = input.value;
-    addImages(value);
+    // addImages(value);
 });
-
-// input_def.addEventListener('input', () => {
-//     const value = input_def.value;
-//     addDefImages(value);
-// });
-
-// input_yellow.addEventListener('input', () => {
-//     const value = input_yellow.value;
-//     addYellowImages(value);
-// });
 
 let temp_item = {
     main: {
@@ -1849,7 +1880,7 @@ function addUpgrades(slotName) {
         item_Upgrade.addEventListener('click', function () {
             var img_temp = document.createElement('img');
             img_temp.src = upgrade.imageSrc;
-            img_temp.className = "main-accs"
+            img_temp.className = "default-accs"
             img_temp.dataset.main_name = upgrade.ru_name;
             $(`.grid-item#${slotName}`).append(img_temp)
             img_temp.dataset.stats = JSON.stringify(upgrade.stats);
@@ -1879,15 +1910,10 @@ function addImages(text) {
         return;
     }
 
-    // console.log(`Введено: ${text}, слот: ${slotName}`);
-    // console.log('Массив объектов:', itemsForSlot);
+    const filtered = itemsForSlot.filter(obj =>
+        obj.item_name.toLowerCase().includes(text.toLowerCase())
+    );
 
-    const filtered = text.length >= 3 
-        ? itemsForSlot.filter(obj =>
-            obj.item_name.toLowerCase().includes(text.toLowerCase())
-        )
-        : [];
-        
     var modalMainAccs = document.querySelector('.modal-main-accs');
     while (modalMainAccs.firstChild) {
         modalMainAccs.removeChild(modalMainAccs.firstChild);
@@ -1918,7 +1944,6 @@ function addImages(text) {
             img_temp.dataset.main_name = item.item_name;
             $(`.grid-item#${slotName}`).append(img_temp)
             $('#modalMainAcsOverlay').css('display', 'none');
-            $('#modalOverlay').css('display', 'flex').hide().fadeIn(200);
             const item_ = getAccsInfoByRuName(item.item_name)
             if (item_) {
                 img_temp.dataset.stats = JSON.stringify(item_.stats);
@@ -1943,7 +1968,6 @@ function addImages(text) {
 
         modalMainAccs.appendChild(item_mainAcs);
     });
-    // console.log('Отфильтрованные:', filtered);
 }
 
 function getItemsBySlots(items, slotName) {
@@ -1988,7 +2012,7 @@ function addDefImages(slotName) {
         if (stats && typeof stats === 'object') {
             for (let key in stats) {
                 if (RuTypes[key]) {
-                    const buffElement = document.createElement('div'); // — Защита: -1% урона
+                    const buffElement = document.createElement('div');
                     switch (key) {
                         case 'deff':
                             if (stats[key] > 0) {
@@ -2073,24 +2097,24 @@ function addDefImages(slotName) {
             temp_item.default.stats = item.stats;
             var img_temp = document.createElement('img');
             const mainAcc = document.querySelector(`.grid-item#${slotName} img.main-accs`);
-            if (mainAcc.dataset.main_name != item.ru_name) {
-                if (mainAcc) {
-                    mainAcc.dataset.stats = JSON.stringify(item.stats);
-                    mainAcc.dataset.ru_name = `${item.ru_name.replaceAll('"', '')}`;
-                    if (item.yellow && Object.keys(item.yellow).length > 0) {
-                        mainAcc.dataset.yellow = JSON.stringify(item.yellow);
-                        mainAcc.dataset.yellow_name = '';
-                    }
-                    if (!mainAcc.dataset.yellow) {
-                        mainAcc.dataset.yellow = JSON.stringify(item.yellow);
-                        mainAcc.dataset.yellow_name = '';
-                    }
-                    mainAcc.dataset.upg = item.upg;
-                }
-                img_temp.src = item.imageSrc;
-                img_temp.className = "default-accs"
-                $(`.grid-item#${slotName}`).append(img_temp)
+            // if (mainAcc.dataset.main_name != item.ru_name) {
+            // if (mainAcc) {
+            img_temp.dataset.stats = JSON.stringify(item.stats);
+            img_temp.dataset.ru_name = `${item.ru_name.replaceAll('"', '')}`;
+            if (item.yellow && Object.keys(item.yellow).length > 0) {
+                img_temp.dataset.yellow = JSON.stringify(item.yellow);
+                img_temp.dataset.yellow_name = '';
             }
+            if (!img_temp.dataset.yellow) {
+                img_temp.dataset.yellow = JSON.stringify(item.yellow);
+                img_temp.dataset.yellow_name = '';
+            }
+            img_temp.dataset.upg = item.upg;
+            // }
+            img_temp.src = item.imageSrc;
+            img_temp.className = "default-accs"
+            $(`.grid-item#${slotName}`).append(img_temp)
+            // }
             $('#modalOverlay').css('display', 'none');
             $('#modalYellowOverlay').css('display', 'flex').hide().fadeIn(200);
             updateStats();
@@ -2158,16 +2182,16 @@ function addYellowImages(slotName) {
             temp_item.default.name = `${item.ru_name.replaceAll('"', '')}`;
             temp_item.default.stats = item.stats;
             var img_temp = document.createElement('img');
-            const mainAcc = document.querySelector(`.grid-item#${slotName} img.main-accs`);
-            if (mainAcc.dataset.yellow != JSON.stringify(item.yellow)) {
-                if (mainAcc) {
-                    mainAcc.dataset.yellow = JSON.stringify(item.yellow);
-                    mainAcc.dataset.yellow_name = item.ru_name;
-                }
-                img_temp.src = `${basePath}imgs/${slotName}/${item.name}.png`;
-                img_temp.className = "yellow-accs"
-                $(`.grid-item#${slotName}`).append(img_temp)
+            const mainAcc = document.querySelector(`.grid-item#${slotName} img.default-accs`);
+            // if (mainAcc.dataset.yellow != JSON.stringify(item.yellow)) {
+            if (mainAcc) {
+                mainAcc.dataset.yellow = JSON.stringify(item.yellow);
+                mainAcc.dataset.yellow_name = item.ru_name;
             }
+            img_temp.src = `${basePath}imgs/${slotName}/${item.name}.png`;
+            img_temp.className = "yellow-accs"
+            $(`.grid-item#${slotName}`).append(img_temp)
+            // }
             $('#modalYellowOverlay').css('display', 'none');
             updateStats();
         });
@@ -2178,7 +2202,7 @@ function addYellowImages(slotName) {
 
 document.querySelectorAll('.grid-item').forEach(item => {
     item.addEventListener('click', (e) => {
-        const img = item.querySelector('img');
+        const img = item.querySelector('img:not(#icons img)');
         if (img) {
             if (img.outerHTML) {
                 temp_info.html = img.outerHTML
@@ -2199,16 +2223,17 @@ document.querySelectorAll('.grid-item').forEach(item => {
                 $('#modalUpgradeOverlay').css('display', 'flex').hide().fadeIn(200);
             } else {
                 const input = document.getElementById('promptMainAcsInput');
-                var modalMainAccs = document.querySelector('.modal-main-accs');
-                while (modalMainAccs.firstChild) {
-                    modalMainAccs.removeChild(modalMainAccs.firstChild);
-                }
+                var modalMainAccs = document.querySelector('.modal-accs');
+                modalMainAccs.innerHTML = '';
+                // while (modalMainAccs.firstChild) {
+                //     modalMainAccs.removeChild(modalMainAccs.firstChild);
+                // }
                 input.dataset.slotName = item.id;
                 input.value = '';
-                addImages('');
+                addDefImages(item.id);
 
-                $('#modalMainAcsOverlay .modal h2').text(`Выберите основной аксессуар на слот "${RuSlots[item.id]}"`)
-                $('#modalMainAcsOverlay').css('display', 'flex').hide().fadeIn(200);
+                $('#modalOverlay .modal h2').text(`Выберите аксессуар на слот "${RuSlots[item.id]}"`)
+                $('#modalOverlay').css('display', 'flex').hide().fadeIn(200);
             }
         }
     })
@@ -2220,7 +2245,6 @@ document.querySelectorAll('.grid-item').forEach(item => {
         e.preventDefault();
         const imgHtml = e.dataTransfer.getData('img-html');
         const slot_name = e.dataTransfer.getData('slot-name');
-        // console.log(imgHtml)
         if (imgHtml) {
 
             const tempDiv = document.createElement('div');
@@ -2328,46 +2352,6 @@ function showPereshiv(slot) {
                 }
             });
 
-            // img.addEventListener('mouseenter', function (event) {
-            //     var yellowData = JSON.parse(this.getAttribute('data-yellow'));
-            //     var buffData = JSON.parse(this.getAttribute('data-buff'));
-            //     var ru_name = this.getAttribute('data-runame');
-
-            //     tooltip.innerHTML = '';
-
-            //     var mainText = document.createElement('div');
-            //     mainText.textContent = ru_name.replaceAll('"', '');
-            //     mainText.style.marginBottom = '10px';
-            //     tooltip.appendChild(mainText);
-
-            //     var spacer = document.createElement('div');
-            //     spacer.style.marginBottom = '10px';
-            //     tooltip.appendChild(spacer);
-
-            //     if (buffData) {
-            //         for (var key in buffData) {
-            //             if (RuTypes[key]) {
-            //                 var yellowElement = document.createElement('div');
-            //                 yellowElement.textContent = `Предмет даёт +${buffData[key]}% к ${RuTypes[key]}`;
-            //                 yellowElement.style.color = 'yellow';
-            //                 tooltip.appendChild(yellowElement);
-            //             }
-            //         }
-            //         tooltip.appendChild(document.createElement('br'))
-            //     }
-
-            //     for (var key in yellowData) {
-            //         if (RuTypes[key]) {
-            //             var yellowElement = document.createElement('div');
-            //             yellowElement.textContent = `${RuTypes[key]}: ${yellowData[key]}`;
-            //             yellowElement.style.color = 'yellow';
-            //             tooltip.appendChild(yellowElement);
-            //         }
-            //     }
-
-            //     tooltip.style.display = 'block';
-            // });
-
             modalAccs.appendChild(item_yellow);
         });
         modalOverlay.style.display = 'flex';
@@ -2426,7 +2410,6 @@ function showToast(message, duration = 3000) {
     toast.className = 'toast';
     toast.textContent = message;
 
-    // Стили можно вынести в CSS, тут для наглядности
     toast.style.cssText = `
     min-width: 200px;
     background-color: #333;
@@ -2446,12 +2429,10 @@ function showToast(message, duration = 3000) {
 
     document.body.appendChild(toast);
 
-    // Запускаем появление
     requestAnimationFrame(() => {
         toast.style.opacity = '1';
     });
 
-    // Скрываем и удаляем через duration
     setTimeout(() => {
         toast.style.opacity = '0';
         toast.addEventListener('transitionend', () => toast.remove());
@@ -2463,18 +2444,19 @@ function createAndAppendImages(dataArray, containerSelector) {
     if (!container) return;
     if (!dataArray) return;
 
-    // Основное изображение
     const mainImg = document.createElement('img');
     mainImg.draggable = true;
-    mainImg.classList.add('main-accs');
+    mainImg.classList.add('default-accs');
 
-    // Выбираем правильный объект (head[1] или head[0])
-    const mainData = dataArray[1] == null ? dataArray[0] : dataArray[1];
+    const mainData = dataArray[0];
+    console.log(dataArray);
     if (!mainData) return;
+
+    const yellowStats = dataArray[1] ? dataArray[1].yellow : dataArray[0].yellow;
 
     mainImg.src = mainData.imageSrc;
     mainImg.dataset.ru_name = dataArray[0].ru_name.replaceAll('"', '');
-    mainImg.dataset.yellow = JSON.stringify(mainData.yellow);
+    mainImg.dataset.yellow = JSON.stringify(yellowStats);
     mainImg.dataset.stats = JSON.stringify(dataArray[0].stats);
     mainImg.dataset.upg = dataArray[0].upg;
 
@@ -2488,19 +2470,17 @@ function createAndAppendImages(dataArray, containerSelector) {
         container.querySelector('.grid-text').children[1].innerText = `+${dataArray[3]}`;
     }
 
-    // Второе изображение, если есть
     if (dataArray[1] != null) {
         if (dataArray[1].buff != null) {
             mainImg.dataset.buff = JSON.stringify(dataArray[1].buff)
         }
         mainImg.dataset.yellow_name = dataArray[1].ru_name.replaceAll('"', '')
         const secondImg = document.createElement('img');
-        secondImg.src = dataArray[0].imageSrc;
-        secondImg.classList.add('default-accs');
+        secondImg.src = dataArray[1].imageSrc;
+        secondImg.classList.add('yellow-accs');
         container.appendChild(secondImg);
     }
 
-    // Nashivka, если есть (dataArray[2])
     if (dataArray[2] != null) {
         mainImg.dataset.nashivka = JSON.stringify(dataArray[2].stats);
         const nashivkaImg = document.createElement('img');
@@ -2508,7 +2488,6 @@ function createAndAppendImages(dataArray, containerSelector) {
         nashivkaImg.classList.add('nashivka');
         container.appendChild(nashivkaImg);
 
-        // Обновляем тултип (если он есть)
         const tooltip = container.querySelector('.tooltip');
 
         tooltip.innerHTML = $(containerSelector).attr('ru-name')
@@ -2619,7 +2598,7 @@ $(document).ready(function () {
                 const item = document.querySelector(`.grid-item#${id}`);
                 if (!item) return;
 
-                const mainImg = item.querySelector('img.main-accs');
+                const mainImg = item.querySelector('img.default-accs');
                 const ruName = mainImg?.dataset?.ru_name || null;
                 const yellowName = mainImg?.dataset?.yellow_name || null;
 
@@ -2675,10 +2654,8 @@ $(document).ready(function () {
                 }
             }
 
-            // Обрабатываем skin_name
             const skin = typeof selectedSkin === 'string' ? selectedSkin : selectedSkin?.ru_name || null;
 
-            // Собираем полный объект сета
             const newSet = {
                 id: crypto.randomUUID(),
                 name: setName,
@@ -2686,7 +2663,6 @@ $(document).ready(function () {
                 ...buildSetFromDOM()
             };
 
-            // Добавляем в массив
             local_set.push(newSet);
 
             localStorage.setItem("localSets", JSON.stringify(local_set))
@@ -2704,10 +2680,8 @@ $(document).ready(function () {
             local_sets = new_sets;
         }
 
-        // Объединяем sets и local_sets (с добавлением custom:true к local_sets)
         const combined = [...sets, ...local_sets.map(set => ({ ...set, custom: true }))];
 
-        // Фильтруем по уникальным id (оставляем первый встреченный)
         const assets_sets = [];
         const seenIds = new Set();
 
@@ -2717,8 +2691,6 @@ $(document).ready(function () {
                 assets_sets.push(set);
             }
         }
-
-        // console.log(assets_sets);
 
         assets_sets.forEach((set, i) => {
             var skin = getSkinInfoByRuName(set.skin);
@@ -2775,7 +2747,6 @@ $(document).ready(function () {
 
             var case_main = getAccsInfoByRuName(case_.stats);
             var case_yellow = getYellowInfoByRuName(case_.yellow);
-            // console.log(set.id)
             const setsHtml = `
                 <div class="modal-set"
                     ${set.id ? `data-id="${set.id}"` : ''}
@@ -2825,7 +2796,7 @@ $(document).ready(function () {
             const $modalSet = $(this);
 
             $modalSet.find('.delete-set-btn').on('click', function (e) {
-                e.stopPropagation(); // не передаём клик родителю
+                e.stopPropagation();
 
                 const setName = $modalSet.find('.skin-name').text().trim();
                 const setId = $modalSet.data('id')
@@ -2919,9 +2890,7 @@ $(document).ready(function () {
     })
 
     $('#closeModal').on('click', function () {
-        // console.log(1)
         const slotName = $(this).data('slotname');
-        // console.log(slotName)
         if (slotName) {
             $('#modalOverlay').css('display', 'none'); $('#modalYellowOverlay').css('display', 'flex').hide().fadeIn(200);
             updateStats();
@@ -2997,15 +2966,12 @@ $(document).ready(function () {
         $('#modalSkinsOverlay').css('display', 'flex').hide().fadeIn(200);
     });
     if (!isMobileDevice()) {
-        // console.log('not mobile');
         character.on('mouseover', function () {
             tooltip.show();
-            // console.log('show');
         });
 
         character.on('mouseout', function () {
             tooltip.hide();
-            // console.log('hide');
         });
     }
 
@@ -3150,11 +3116,7 @@ $(document).ready(function () {
         container.empty();
         var gridItem = $(this).closest('.grid-item');
         var item_slot = gridItem.attr('id');
-        var item_ = gridItem.find('img.main-accs')[0];
-
-        // console.log(1, gridItem)
-        // console.log(2, item_slot)
-        // console.log(3, item_)
+        var item_ = gridItem.find('img.default-accs')[0];
 
         nashivki.forEach((nashivka, i) => {
             if (nashivka.slot == item_slot || nashivka.slot == 'all') {
@@ -3188,13 +3150,11 @@ $(document).ready(function () {
             const index = $(this).data('index');
             const slot = $(this).data('slot');
             const $gridItem = $(`.grid-item#${slot}`);
-            var item = $gridItem.find('img.main-accs')[0];
+            var item = $gridItem.find('img.default-accs')[0];
             var tooltip = $gridItem.find('.tooltip')[0];
             var nashivka = nashivki[index];
 
-            // console.log('click: ', nashivka);
             $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'));
-            // console.log(4, $gridItem)
             if (item != undefined) {
                 item.dataset.nashivka = JSON.stringify(nashivka.stats);
                 if (item.dataset.nashivka != undefined) {
@@ -3216,8 +3176,8 @@ $(document).ready(function () {
 
     document.querySelectorAll('.mini-container').forEach(container => {
         container.addEventListener('wheel', function (e) {
-            e.preventDefault(); // отменяем стандартную вертикальную прокрутку
-            container.scrollLeft += e.deltaY; // прокручиваем по горизонтали на deltaY (обычно вертикальный скролл)
+            e.preventDefault();
+            container.scrollLeft += e.deltaY;
         });
         function updateJustify() {
             if (container.scrollWidth > container.clientWidth) {
@@ -3227,10 +3187,8 @@ $(document).ready(function () {
             }
         }
 
-        // Вызвать сразу при загрузке
         updateJustify();
 
-        // Можно повесить на ресайз окна, если ширина меняется
         window.addEventListener('resize', updateJustify);
     });
 });
