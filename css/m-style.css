@@ -138,13 +138,17 @@ body {
 }
 
 .grid-item img.default-accs {
-    max-width: 40%;
+    max-width: 85%;
+    max-height: 85%;
+    z-index: 9;
+    cursor: pointer;
+    /* max-width: 40%;
     max-height: 40%;
     position: absolute;
     z-index: 10;
     top: 0;
     right: 0;
-    pointer-events: none;
+    pointer-events: none; */
 }
 
 .grid-item img.yellow-accs {
@@ -152,9 +156,10 @@ body {
     max-height: 40%;
     position: absolute;
     z-index: 10;
-    top: 50%;
+    /* top: 50%; */
+    top: 0;
     right: 0;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     pointer-events: none;
 }
 
@@ -731,7 +736,7 @@ body {
 }
 
 
-  #toast {
+#toast {
     visibility: hidden;
     min-width: 200px;
     background-color: #333;
@@ -747,9 +752,9 @@ body {
     font-weight: 600;
     opacity: 0;
     transition: opacity 0.4s ease, visibility 0.4s;
-  }
+}
 
-  #toast.show {
+#toast.show {
     visibility: visible;
     opacity: 1;
-  }
+}
